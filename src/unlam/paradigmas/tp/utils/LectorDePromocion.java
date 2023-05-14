@@ -1,6 +1,7 @@
 package unlam.paradigmas.tp.utils;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.Vector;
 
