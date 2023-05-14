@@ -1,5 +1,4 @@
 package unlam.paradigmas.tp.modelos;
-import static org.junit.Assert.*;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,7 +12,7 @@ public class UsuarioTests {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		Assert.fail("Not yet implemented");
 	}
 
 }
