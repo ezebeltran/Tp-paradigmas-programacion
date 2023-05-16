@@ -1,20 +1,32 @@
 package unlam.paradigmas.tp.modelos;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import unlam.paradigmas.tp.utils.ColorC;
 
 public abstract class Promocion {
 
-	private ArrayList<Atraccion> atracciones;
-	private String tipo;
-	private double descuento;
+	protected List<Atraccion> atracciones;
+	protected String tipo;
+	protected double descuento;
+	protected double precioSinDescuento;
+	protected double precioConDescuento;
+	
 
-	public Promocion(ArrayList<Atraccion> atracciones, String tipo, double descuento) {
+	public Promocion(List<Atraccion> atracciones, String tipo, double descuento) {
 		this.atracciones = atracciones;
 		this.tipo = tipo;
 		this.descuento = descuento;
+		
+		Double precios = 0.0;
+		for (Atraccion atraccion : atracciones) {
+			precios += atraccion.obtenerCosto();
+		}
+		this.precioSinDescuento=precios;
+		this.precioConDescuento = 0;
 	}
 	
-	public abstract void mostrarPromocion();
+	//public abstract void mostrarPromocion();
 
 	@Override
 	public int hashCode() {
@@ -60,6 +72,20 @@ public abstract class Promocion {
 		return true;
 	}
 	
-	
 
+	public String obtenerTipo() {
+		return this.tipo;
+	}
+	
+	@Override
+	public String toString() {
+		return ColorC.TEXT_RED
+				+"atracciones=" + atracciones + "\n"
+				+ ColorC.TEXT_RED
+				+ ", tipo=" + tipo + ", descuento=" + descuento
+				+ ", precioSinDescuento=" + precioSinDescuento 
+				+ ", precioConDescuento=" + precioConDescuento + "]"
+				;
+	}
+	
 }

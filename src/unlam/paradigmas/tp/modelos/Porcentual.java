@@ -1,20 +1,26 @@
 package unlam.paradigmas.tp.modelos;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import unlam.paradigmas.tp.utils.ColorC;
 
 public class Porcentual extends Promocion {
 	
-	private double precioConDescuento;
 
-	public Porcentual(ArrayList<Atraccion> atracciones, String tipo, double descuento) {
+	public Porcentual(List<Atraccion> atracciones, String tipo, double descuento) {
 		super(atracciones, tipo, descuento);
-		// TODO Auto-generated constructor stub
+		
+		this.precioConDescuento=this.precioSinDescuento-this.precioSinDescuento*descuento/100;
 	}
 
 	@Override
-	public void mostrarPromocion() {
-		// TODO Auto-generated method stub
-
+	public String toString() {
+		return ColorC.TEXT_RED
+				+"Pack "+ this.obtenerTipo() + " con descuento porcentual " 
+				+ "[" + super.toString() + "]\n"
+				+ColorC.RESET;
 	}
+
+	
 
 }

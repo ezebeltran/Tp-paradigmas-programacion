@@ -1,20 +1,23 @@
 package unlam.paradigmas.tp.modelos;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import unlam.paradigmas.tp.utils.ColorC;
 
 public class Absoluta extends Promocion {
-	
-	private double precioFinal;
 
-	public Absoluta(ArrayList<Atraccion> atracciones, String tipo, double descuento) {
+	public Absoluta(List<Atraccion> atracciones, String tipo, double descuento) {
 		super(atracciones, tipo, descuento);
-		this.precioFinal = descuento;
+
+		this.precioConDescuento = descuento;
 	}
 
 	@Override
-	public void mostrarPromocion() {
-		// TODO Auto-generated method stub
-
+	public String toString() {
+		return ColorC.TEXT_RED 
+				+"Pack "+ this.obtenerTipo() + " con descuento absoluto "
+				+ "[" + super.toString() + "]\n" 
+				+ ColorC.RESET;
 	}
 
 }

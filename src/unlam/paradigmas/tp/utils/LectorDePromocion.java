@@ -1,12 +1,12 @@
 package unlam.paradigmas.tp.utils;
 
 import java.io.File;
-import java.io.IOException;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 import unlam.paradigmas.tp.modelos.Absoluta;
 import unlam.paradigmas.tp.modelos.Atraccion;
@@ -15,45 +15,33 @@ import unlam.paradigmas.tp.modelos.Porcentual;
 import unlam.paradigmas.tp.modelos.Promocion;
 
 public class LectorDePromocion {
-	private File file;
+	private String ruta;
 	// private String carpeta = "entrada/";
 
-	public LectorDePromocion(String nombre) {
-		file = new File(nombre);
+	public LectorDePromocion(String nombre) throws IllegalArgumentException {
+		if (nombre == "")
+			throw new IllegalArgumentException();
+		this.ruta = nombre;
+			
 	}
 
-	public Boolean existeArvhivo() {
-		return file.exists();
+	public Boolean existeArvhivo() throws Exception {
+		File file = new File(ruta);
+		return file.exists() && file.isFile();
 	}
 
-	public String leerLineaPromocion() {
-		Scanner scanner = null;
-		String linea = null;
-
-		try {
-			scanner = new Scanner(file);
-			linea = scanner.nextLine();
-			scanner.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			scanner.close();
-		}
-
-		return linea;
-	}
-
-	public ArrayList<Promocion> leerPromociones(LinkedHashSet<Atraccion> atraccionesEjemplo) {
+	public ArrayList<Promocion> leerPromociones (Set<Atraccion> atraccionesEjemplo) throws Exception {
+		existeArvhivo();
 		Scanner scanner = null;
 		String linea = null;
 		ArrayList<Promocion> promociones = null;
 		
 		try {
-			scanner = new Scanner(file);
+			scanner = new Scanner(new FileInputStream(ruta));
+			promociones = new ArrayList<Promocion>();
 			
 			while (scanner.hasNextLine()) {
 				linea = scanner.nextLine();
-				promociones = new ArrayList<Promocion>();
 				ArrayList<Atraccion> atracciones = new ArrayList<Atraccion>();
 				
 				String[] strSplit = linea.split(",");
@@ -96,7 +84,7 @@ public class LectorDePromocion {
 		return promociones;
 	}
 
-	private Atraccion buscarAtraccion(LinkedHashSet<Atraccion> atracciones, String nombreAtraccion) {
+	private Atraccion buscarAtraccion(Set<Atraccion> atracciones, String nombreAtraccion) {
 		Atraccion encontrado = null;
 		Iterator<Atraccion> it = atracciones.iterator();
 		while (it.hasNext()) {

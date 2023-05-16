@@ -1,12 +1,14 @@
 package unlam.paradigmas.tp.modelos;
 
+import unlam.paradigmas.tp.utils.ColorC;
+
 public class Atraccion {
 	private String nombre;
 	private Integer costo;
 	private Double tiempo;
 	private Integer cupo;
 	private String tipo;
-	
+
 	public Atraccion(String nombre, Integer costo, Double tiempo, Integer cupo, String tipo) {
 		this.nombre = nombre;
 		this.costo = costo;
@@ -80,7 +82,29 @@ public class Atraccion {
 	public String obtenerNombre() {
 		return this.nombre;
 	}
-	
-	
-	
+
+	public String obtenerTipo() {
+		return this.tipo;
+	}
+
+	public Integer obtenerCosto() {
+		return this.costo;
+	}
+
+	public Double obtenerTiempo() {
+		return this.tiempo;
+	}
+
+	@Override
+	public String toString() {
+		return ColorC.TEXT_BLUE 
+				+ "\n\tAtraccion [nombre=" 
+				+ ColorC.TEXT_WHITE 
+				+ nombre 
+				+ ColorC.TEXT_BLUE
+				+ ", costo=" + costo + ", tiempo=" + tiempo 
+				+ ", cupo="	+ cupo + ", tipo=" + tipo + "]" 
+				+ ColorC.TEXT_RED;
+	}
+
 }

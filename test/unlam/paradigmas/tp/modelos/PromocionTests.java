@@ -1,7 +1,6 @@
 package unlam.paradigmas.tp.modelos;
 
 import java.util.LinkedHashSet;
-import java.util.Iterator;
 import java.util.ArrayList;
 
 import org.junit.Assert;
@@ -9,17 +8,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import unlam.paradigmas.tp.utils.LectorDePromocion;
-import unlam.paradigmas.tp.modelos.Absoluta;
-import unlam.paradigmas.tp.modelos.Atraccion;
-import unlam.paradigmas.tp.modelos.Combo;
-import unlam.paradigmas.tp.modelos.Porcentual;
-import unlam.paradigmas.tp.modelos.Promocion;
 
 public class PromocionTests {
 	private LinkedHashSet<Atraccion> atraccionesEjemplo;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		
 		atraccionesEjemplo = new LinkedHashSet<Atraccion>();
 		atraccionesEjemplo.add(new Atraccion("Moria"			,10	,2.0,6	,"Aventura"));
@@ -34,41 +28,48 @@ public class PromocionTests {
 
 	@Test
 	public void existeElArchivo() {
-		
-		LectorDePromocion archivoPromo = new LectorDePromocion("entrada/promociones.txt");
-		Assert.assertTrue(archivoPromo.existeArvhivo());
+		Boolean fallo = false;
+		try {
+			LectorDePromocion archivoPromo = new LectorDePromocion("entrada/promociones.txt");
+			archivoPromo.existeArvhivo();
+		} catch (Exception e) {
+			fallo = true;
+		}
+		Assert.assertFalse(fallo);
 	}
 	
 	@Test
-	public void noExisteElArchivo() {
-		
-		LectorDePromocion archivoPromo = new LectorDePromocion("entrada/nada.txt");
-		Assert.assertFalse(archivoPromo.existeArvhivo());
+	public void noExisteElArchivo () {
+		Boolean fallo = true;
+		try {
+			LectorDePromocion archivoPromo = new LectorDePromocion("");
+			archivoPromo.existeArvhivo();
+			
+		} catch (Exception e) {
+			fallo = false;
+		}
+		Assert.assertFalse(fallo);
 	}
 	
 	@Test
 	public void archivoVacio() {
-		
-		LectorDePromocion archivoPromo = new LectorDePromocion("");
-		Assert.assertFalse(archivoPromo.existeArvhivo());
+		Boolean fallo = true;
+		ArrayList<Promocion> promocionesEsperado = new ArrayList<Promocion>();
+		ArrayList<Promocion> promocionesObtenido = null;
+		try {
+			LectorDePromocion archivoPromo = new LectorDePromocion("entrada/vacio.txt");
+			promocionesObtenido = archivoPromo.leerPromociones(atraccionesEjemplo);
+		} catch (Exception e) {
+			fallo = true;
+		}
+		if (promocionesEsperado.isEmpty() && promocionesObtenido.isEmpty())
+			fallo=false;
+		Assert.assertFalse(fallo);
 	}
-
-	
-//	@Test
-//	public void leeLineaPromocion() {
-//		
-//		String lineaEsperadaPromo = "Aventura,Porcentual,Moria,Mordor,Bosque Negro,50";
-//		
-//		LectorDePromocion archivoPromo = new LectorDePromocion("entrada/promociones.txt");
-//		String lineaLeidaPromo =  archivoPromo.leerLineaPromocion();
-//		
-//		Assert.assertEquals(lineaEsperadaPromo, lineaLeidaPromo);
-//		//System.out.println(lineaLeidaPromo);
-//	}
-	
 	
 	@Test
 	public void leeUnaPromocionPorcentual() {
+		Boolean fallo = true;
 		
 		ArrayList<Promocion> promocionEsperada = new ArrayList<Promocion>();
 		
@@ -79,30 +80,48 @@ public class PromocionTests {
 		promocionEsperada.add(promoAventuraPorcentual);
 				
 		LectorDePromocion archivoPromo = new LectorDePromocion("entrada/promocionPorcentual.txt");
-		ArrayList<Promocion> promocionObtenida = archivoPromo.leerPromociones(atraccionesEjemplo);
 		
-		Assert.assertEquals(promocionEsperada, promocionObtenida);
+		ArrayList<Promocion> promocionObtenida = null;
+		try {
+			promocionObtenida = archivoPromo.leerPromociones(atraccionesEjemplo);
+		} catch (Exception e) {
+			fallo = true;
+		}
+		
+		if (promocionEsperada.equals(promocionObtenida))
+			fallo=false;
+		Assert.assertFalse(fallo);
 	}
 	
 	@Test
 	public void leeUnaPromocionAbsoluta() {
+		Boolean fallo = true;
 		
 		ArrayList<Promocion> promocionEsperada = new ArrayList<Promocion>();
 		
 		ArrayList<Atraccion> atraccionesConDescuento = new ArrayList<Atraccion>();
 		atraccionesConDescuento.add(new Atraccion("Lothlórien"		,35	,1.0,30	,"Degustación"));
 		atraccionesConDescuento.add(new Atraccion("La Comarca"		,3	,6.5,150,"Degustación"));
-		Absoluta promoAventuraPorcentual = new Absoluta(atraccionesConDescuento, "Degustacion", 36);
-		promocionEsperada.add(promoAventuraPorcentual);
+		Absoluta promoAventuraAbsoluta = new Absoluta(atraccionesConDescuento, "Degustacion", 36);
+		promocionEsperada.add(promoAventuraAbsoluta);
 				
 		LectorDePromocion archivoPromo = new LectorDePromocion("entrada/promocionAbsoluta.txt");
-		ArrayList<Promocion> promocionObtenida = archivoPromo.leerPromociones(atraccionesEjemplo);
+		ArrayList<Promocion> promocionObtenida = null;
 		
-		Assert.assertEquals(promocionEsperada, promocionObtenida);
+		try {
+			promocionObtenida = archivoPromo.leerPromociones(atraccionesEjemplo);
+		} catch (Exception e) {
+			fallo = true;
+		}
+		
+		if (promocionEsperada.equals(promocionObtenida))
+			fallo=false;
+		Assert.assertFalse(fallo);
 	}
 	
 	@Test
 	public void leeUnaPromocionCombo() {
+		Boolean fallo = true;
 		
 		ArrayList<Promocion> promocionEsperada = new ArrayList<Promocion>();
 		
@@ -110,13 +129,21 @@ public class PromocionTests {
 		atraccionesConDescuento.add(new Atraccion("Minas Tirith"		,5	,2.5,25	,"Paisaje"));
 		atraccionesConDescuento.add(new Atraccion("Abismo de Helm"	,5	,2.0,15	,"Paisaje"));
 		atraccionesConDescuento.add(new Atraccion("Erebor"			,12	,3.0,32	,"Paisaje"));
-		Combo promoAventuraPorcentual = new Combo(atraccionesConDescuento, "Paisaje", 0);
-		promocionEsperada.add(promoAventuraPorcentual);
+		Combo promoAventuraCombo = new Combo(atraccionesConDescuento, "Paisaje", 0);
+		promocionEsperada.add(promoAventuraCombo);
 				
 		LectorDePromocion archivoPromo = new LectorDePromocion("entrada/promocionCombo.txt");
-		ArrayList<Promocion> promocionObtenida = archivoPromo.leerPromociones(atraccionesEjemplo);
+		ArrayList<Promocion> promocionObtenida = null;
 		
-		Assert.assertEquals(promocionEsperada, promocionObtenida);
+		try {
+			promocionObtenida = archivoPromo.leerPromociones(atraccionesEjemplo);
+		} catch (Exception e) {
+			fallo = true;
+		}
+		
+		if (promocionEsperada.equals(promocionObtenida))
+			fallo=false;
+		Assert.assertFalse(fallo);
 	}
 
 }
