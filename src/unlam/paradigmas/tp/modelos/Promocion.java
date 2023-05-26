@@ -6,6 +6,7 @@ import unlam.paradigmas.tp.utils.ColorC;
 
 public abstract class Promocion implements Comparable<Promocion> {
 
+	protected String nombre;
 	protected List<Atraccion> atracciones;
 	protected String tipo;
 	//protected double descuento;
@@ -13,23 +14,28 @@ public abstract class Promocion implements Comparable<Promocion> {
 	protected int precioNormal;
 	protected int precioPromocion;
 
-	public Promocion(List<Atraccion> atracciones, String tipo) {
+	public Promocion(String nombre, List<Atraccion> atracciones, String tipo) {
+		this.nombre=nombre;
 		this.atracciones = atracciones;
 		this.tipo = tipo;
 		//this.descuento = descuento;
 		
 		
 		for (Atraccion atraccion : atracciones) {
-			this.precioNormal += atraccion.getCosto();
+			this.precioNormal += atraccion.getPrecio();
 		}
 		
 		
 		for (Atraccion atraccion : atracciones) {
-			this.tiempoTotal= atraccion.getTiempo();
+			this.tiempoTotal+= atraccion.getTiempo();
 		}
 		//this.precioConDescuento = 0;
 	}
 	
+	public String getNombre() {
+		return nombre;
+	}
+
 	public String getTipo() {
 		return this.tipo;
 	}
@@ -112,7 +118,7 @@ public abstract class Promocion implements Comparable<Promocion> {
 	public String toString() {
 		return //ColorC.TEXT_RED
 				"-Atracciones incluidas: [" + this.listAtraccionesAString() + "]\n"
-				+"-Duracion: " + this.tiempoTotal + "\n"
+				+"-Duracion: " + this.tiempoTotal + " horas\n"
 				+"-Precio original: $" + this.precioNormal + "\n"
 				+"-Precio con descuento: $" + this.precioPromocion + "\n"
 				//+ ColorC.TEXT_RED

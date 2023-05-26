@@ -16,6 +16,11 @@ public class Usuario {
 	}
 	
 	
+	public String getNombre() {
+		return nombre;
+	}
+
+
 	public double getPresupuesto() {
 		return this.presupuesto;
 	}
@@ -36,7 +41,7 @@ public class Usuario {
 		}
 	}
 	
-	public void reducirTiempo(float tiempo) {
+	public void reducirTiempo(double tiempo) {
 		if(tiempo > this.tiempoDisponible) {
 			throw new Error("El tiempo es mayor al tiempo disponible del usuario.");
 		} else {

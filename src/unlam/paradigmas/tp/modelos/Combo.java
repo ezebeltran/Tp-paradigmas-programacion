@@ -8,14 +8,14 @@ public class Combo extends Promocion {
 	
 	private List<Atraccion> atraccionesGratis;
 
-	public Combo(List<Atraccion> atracciones, String tipo, List<Atraccion> atraccionesGratis) {
-		super(atracciones, tipo);
+	public Combo(String nombre, List<Atraccion> atracciones, String tipo, List<Atraccion> atraccionesGratis) {
+		super(nombre, atracciones, tipo);
 		
 		this.atraccionesGratis= atraccionesGratis;
 		this.precioPromocion = this.precioNormal; // antes de cargar el precio de las gratis
 		
 		for (Atraccion atraccion : atraccionesGratis) {
-			this.precioNormal += atraccion.getCosto();
+			this.precioNormal += atraccion.getPrecio();
 		}
 		
 		for (Atraccion atraccion : atraccionesGratis) {
@@ -40,7 +40,7 @@ public class Combo extends Promocion {
 	@Override
 	public String toString() {
 		return 
-				"Promocion "+ this.getTipo() + " con descuento AxB\n"
+				"Promocion "+ this.getNombre() + ". Descuento AxB\n"
 				 + super.toString() 
 				;
 	}

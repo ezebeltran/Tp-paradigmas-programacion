@@ -33,7 +33,7 @@ public class Logica {
 		atraccionesPackAventura.add(new Atraccion("Bosque Negro", 3, 4.0, 12, "Aventura"));
 		atraccionesPackAventura.add(new Atraccion("Mordor", 25, 3.0, 4, "Aventura"));
 
-		Promocion packAventura = new Porcentual(atraccionesPackAventura, "Porcentual", 20);
+		Promocion packAventura = new Porcentual("Pack aventura",atraccionesPackAventura, "Porcentual", 20);
 
 		promociones.add(packAventura);
 		
@@ -41,7 +41,7 @@ public class Logica {
 		atraccionesPackDegustacion.add(new Atraccion("Lothlórien", 35, 1.0, 30, "Degustación"));
 		atraccionesPackDegustacion.add(new Atraccion("La Comarca", 3, 6.5, 150, "Degustación"));
 
-		Promocion packDegustacion = new Absoluta(atraccionesPackDegustacion, "Absoluta");
+		Promocion packDegustacion = new Absoluta("Pack degustacion", atraccionesPackDegustacion, "Absoluta");
 
 		promociones.add(packDegustacion);
 
@@ -51,7 +51,7 @@ public class Logica {
 		atraccionesPackPaisajes.add(new Atraccion("Abismo de Helm", 5, 2.0, 15, "Paisaje"));
 		atraccionesPackPaisajesGratis.add(new Atraccion("Erebor", 12, 3.0, 32, "Paisaje"));
 		
-		Promocion packPaisaje = new Combo(atraccionesPackPaisajes, "Combo", atraccionesPackPaisajesGratis);
+		Promocion packPaisaje = new Combo("Pack paisaje", atraccionesPackPaisajes, "Combo", atraccionesPackPaisajesGratis);
 
 		promociones.add(packPaisaje);
 		

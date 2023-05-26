@@ -61,7 +61,7 @@ public class LectorDePromocion {
 				
 				switch (tipoDePromocion) {
 				case "Porcentual":
-					promociones.add(new Porcentual(atracciones, nombrePaquete, descuento));
+					//promociones.add(new Porcentual(atracciones, nombrePaquete, descuento));
 					break;
 				case "Absoluta":
 					//promociones.add(new Absoluta(atracciones, nombrePaquete, descuento));

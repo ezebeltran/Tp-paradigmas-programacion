@@ -37,7 +37,7 @@ public class Itinerario {
 	public int getTiempo() {
 		return tiempo;
 	}
-	public void sumarTiempo(int tiempo) {
+	public void sumarTiempo(double tiempo) {
 		this.tiempo += tiempo;
 	}
 	@Override

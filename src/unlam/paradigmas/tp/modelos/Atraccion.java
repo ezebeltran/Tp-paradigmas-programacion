@@ -4,14 +4,14 @@ import unlam.paradigmas.tp.utils.ColorC;
 
 public class Atraccion implements Comparable<Atraccion> {
 	private String nombre;
-	private Integer costo;
+	private Integer precio;
 	private Double tiempo;
 	private Integer cupo;
 	private String tipo;
 
 	public Atraccion(String nombre, Integer costo, Double tiempo, Integer cupo, String tipo) {
 		this.nombre = nombre;
-		this.costo = costo;
+		this.precio = costo;
 		this.tiempo = tiempo;
 		this.cupo = cupo;
 		this.tipo = tipo;
@@ -21,7 +21,7 @@ public class Atraccion implements Comparable<Atraccion> {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((costo == null) ? 0 : costo.hashCode());
+		result = prime * result + ((precio == null) ? 0 : precio.hashCode());
 		result = prime * result + ((cupo == null) ? 0 : cupo.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
 		result = prime * result + ((tiempo == null) ? 0 : tiempo.hashCode());
@@ -45,11 +45,11 @@ public class Atraccion implements Comparable<Atraccion> {
 			return false;
 		}
 		Atraccion other = (Atraccion) obj;
-		if (costo == null) {
-			if (other.costo != null) {
+		if (precio == null) {
+			if (other.precio != null) {
 				return false;
 			}
-		} else if (!costo.equals(other.costo)) {
+		} else if (!precio.equals(other.precio)) {
 			return false;
 		}
 		if (cupo == null) {
@@ -91,8 +91,8 @@ public class Atraccion implements Comparable<Atraccion> {
 		return this.tipo;
 	}
 
-	public Integer getCosto() {
-		return this.costo;
+	public Integer getPrecio() {
+		return this.precio;
 	}
 
 	public Double getTiempo() {
@@ -101,21 +101,18 @@ public class Atraccion implements Comparable<Atraccion> {
 
 	@Override
 	public String toString() {
-		return ColorC.TEXT_BLUE 
-				+ "\n\tAtraccion\n"
-				+ "-Nombre: [" 
-				+ ColorC.TEXT_WHITE 
+		return 
+			 "Atraccion\n"
+				+ "-Nombre: ["
 				+ nombre 
-				+ ColorC.TEXT_BLUE
-				+ "]\n "
-				+ "-Precio=" + costo + "\n"
-				+ " -Duracion: " + tiempo 
-				+ ColorC.TEXT_RED;
+				+ "]\n"
+				+ "-Precio= $" + precio + "\n"
+				+ "-Duracion: " + tiempo + " horas\n";
 	}
 
 	@Override
 	public int compareTo(Atraccion otraAtraccion) {
-		int res= Integer.compare(this.costo, otraAtraccion.costo);
+		int res= Integer.compare(this.precio, otraAtraccion.precio);
 		if(res!=0)
 			return res;
 		

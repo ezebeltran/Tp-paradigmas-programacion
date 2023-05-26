@@ -50,6 +50,8 @@ public class Main {
 		 * for (Promocion i : promociones) { System.out.println( i ); }
 		 */
 
+		System.out.println("\n\t Bienvenido/a a Tierra Media");
+		System.out.println("----------------------------------------------------------------------------------\n");
 		Scanner scanner = new Scanner(System.in);
 
 		List<Itinerario> itinerarios = new ArrayList<Itinerario>();
@@ -77,6 +79,8 @@ public class Main {
 			List<Atraccion> atraccionesAceptadas = new ArrayList<Atraccion>();
 
 			itinerario.setUsuario(usuario);
+			
+			System.out.println("Nombre de visitante: " + usuario.getNombre()+ "\n");
 
 			Iterator<Promocion> itPromoPref = promociones.iterator();
 
@@ -84,22 +88,29 @@ public class Main {
 				Promocion promocion = (Promocion) itPromoPref.next();
 
 				if (usuario.getPresupuesto() >= promocion.getPrecioPromocion()
-						&& usuario.getTiempo() >= promocion.getTiempoTotal()) {
+						&& usuario.getTiempo() >= promocion.getTiempoTotal()
+						&& promocion.getTipo().equals(usuario.getTipoPreferido())) {
 					/** Sugerir promo **/
 					System.out.println(promocion.toString());
 					System.out.println("Acepta sugerencia? Ingrese S o N");
 					String respuesta = scanner.nextLine();
 
-					if (respuesta.equals("S")) {
+					if (respuesta.equals("S") || respuesta.equals("s")) {
 						promosAceptadas.add(promocion);
 						
+						usuario.reducirPresupuesto(promocion.getPrecioPromocion());
+						usuario.reducirTiempo(promocion.getTiempoTotal());
 						itinerario.sumarPrecio(promocion.getPrecioPromocion());
-						itinerario.sumarTiempo(promocion.getPrecioPromocion());
+						itinerario.sumarTiempo(promocion.getTiempoTotal());
+						
+						System.out.println("¡Aceptada!");
 						
 						/** como verifico el cupo de la promocion **/
 						if (promocion.hayAtraccionSinCupo())
 							itPromoPref.remove();
 					}
+					
+					System.out.println("----------------------------------------------------------------------------------\n");
 				}
 
 			
@@ -110,21 +121,28 @@ public class Main {
 			while (itAtraccionesPref.hasNext()) {
 				Atraccion atraccion = (Atraccion) itAtraccionesPref.next();
 
-				if (usuario.getPresupuesto() >= atraccion.getCosto() && usuario.getTiempo() >= atraccion.getTiempo()) {
+				if (usuario.getPresupuesto() >= atraccion.getPrecio() && usuario.getTiempo() >= atraccion.getTiempo() && atraccion.getTipo().equals(usuario.getTipoPreferido())) {
 
 					System.out.println(atraccion.toString());
 					System.out.println("Acepta sugerencia? Ingrese S o N");
 					String respuesta = scanner.nextLine();
 
-					if (respuesta.equals("S")) {
+					if (respuesta.equals("S") || respuesta.equals("s")) {
 						atraccionesAceptadas.add(atraccion);
-						itinerario.sumarPrecio(atraccion.getCosto());
-						itinerario.sumarTiempo(atraccion.getCosto());
+						
+						usuario.reducirPresupuesto(atraccion.getPrecio());
+						usuario.reducirTiempo(atraccion.getTiempo());
+						
+						itinerario.sumarPrecio(atraccion.getPrecio());
+						itinerario.sumarTiempo(atraccion.getTiempo());
+						
+						System.out.println("¡Aceptada!");
 						
 						if (atraccion.getCupo() == 0)
 							itAtraccionesPref.remove();
 					}
 
+					System.out.println("----------------------------------------------------------------------------------\n");
 				}
 
 				
@@ -142,16 +160,23 @@ public class Main {
 					System.out.println("Acepta sugerencia? Ingrese S o N");
 					String respuesta = scanner.nextLine();
 
-					if (respuesta.equals("S")) {
+					if (respuesta.equals("S") || respuesta.equals("s")) {
 						promosAceptadas.add(promocion);
-						itinerario.sumarPrecio(promocion.getPrecioPromocion());
-						itinerario.sumarTiempo(promocion.getPrecioPromocion());
 						
+						usuario.reducirPresupuesto(promocion.getPrecioPromocion());
+						usuario.reducirTiempo(promocion.getTiempoTotal());
+						
+						itinerario.sumarPrecio(promocion.getPrecioPromocion());
+						itinerario.sumarTiempo(promocion.getTiempoTotal());
+						
+						System.out.println("¡Aceptada!");
 						/** como verifico el cupo de la promocion **/
 
 						if (promocion.hayAtraccionSinCupo())
 							itPromoRestantes.remove();
 					}
+					
+					System.out.println("----------------------------------------------------------------------------------\n");
 				}
 
 				
@@ -162,18 +187,27 @@ public class Main {
 			while (itAtraccionesRestantes.hasNext()) {
 				Atraccion atraccion = (Atraccion) itAtraccionesRestantes.next();
 
-				if (usuario.getPresupuesto() >= atraccion.getCosto() && usuario.getTiempo() >= atraccion.getTiempo()) {
+				if (usuario.getPresupuesto() >= atraccion.getPrecio() && usuario.getTiempo() >= atraccion.getTiempo()) {
 					System.out.println(atraccion.toString());
 					System.out.println("Acepta sugerencia? Ingrese S o N");
 					String respuesta = scanner.nextLine();
 
-					if (respuesta.equals("S")) {
+					if (respuesta.equals("S") || respuesta.equals("s")) {
 						atraccionesAceptadas.add(atraccion);
-						itinerario.sumarPrecio(atraccion.getCosto());
-						itinerario.sumarTiempo(atraccion.getCosto());
+						
+						usuario.reducirPresupuesto(atraccion.getPrecio());
+						usuario.reducirTiempo(atraccion.getTiempo());
+						
+						itinerario.sumarPrecio(atraccion.getPrecio());
+						itinerario.sumarTiempo(atraccion.getTiempo());
+						
+						System.out.println("¡Aceptada!");
+						
 						if (atraccion.getCupo() == 0)
 							itAtraccionesRestantes.remove();
 					}
+					
+					System.out.println("----------------------------------------------------------------------------------\n");
 
 				}
 

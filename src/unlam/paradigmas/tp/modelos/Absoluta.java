@@ -6,18 +6,17 @@ import unlam.paradigmas.tp.utils.ColorC;
 
 public class Absoluta extends Promocion {
 
-	public Absoluta(List<Atraccion> atracciones, String tipo) {
-		super(atracciones, tipo);
+	public Absoluta(String nombre, List<Atraccion> atracciones, String tipo) {
+		super(nombre, atracciones, tipo);
 
 		//this.precioConDescuento = descuento;
 	}
 
 	@Override
 	public String toString() {
-		return ColorC.TEXT_RED 
-				+"Pack "+ this.getTipo() + " con descuento absoluto "
-				+ "[" + super.toString() + "]\n" 
-				+ ColorC.RESET;
+		return 
+				"Promocion "+ this.getNombre() + ". Descuento absoluto\n"
+				+ super.toString() + "\n";
 	}
 
 }
