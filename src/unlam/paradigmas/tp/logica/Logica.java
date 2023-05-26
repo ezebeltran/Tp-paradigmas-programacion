@@ -17,7 +17,7 @@ public class Logica {
 	public static List<Usuario> getUsuariosAchivo() {
 
 		List<Usuario> usuarios = new ArrayList<Usuario>();
-		usuarios.add(new Usuario("frodo", 10, 8, "Aventura"));
+		usuarios.add(new Usuario("frodo", 100, 12, "Aventura"));
 		usuarios.add(new Usuario("Galardiel", 100, 5, "Paisaje"));
 		usuarios.add(new Usuario("Sam", 36, 8, "Degustación"));
 

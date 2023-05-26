@@ -89,8 +89,7 @@ public class Main {
 				Promocion promocion = (Promocion) itPromoPref.next();
 
 				if (usuario.getPresupuesto() >= promocion.getPrecioPromocion()
-						&& usuario.getTiempo() >= promocion.getTiempoTotal()
-						&& promocion.getTipo().equals(usuario.getTipoPreferido())) {
+						&& usuario.getTiempo() >= promocion.getTiempoTotal()) {
 					/** Sugerir promo **/
 					System.out.println(promocion.toString());
 					System.out.println("Acepta sugerencia? Ingrese S o N");
@@ -124,7 +123,7 @@ public class Main {
 			while (itAtraccionesPref.hasNext()) {
 				Atraccion atraccion = (Atraccion) itAtraccionesPref.next();
 
-				if (usuario.getPresupuesto() >= atraccion.getPrecio() && usuario.getTiempo() >= atraccion.getTiempo() && atraccion.getTipo().equals(usuario.getTipoPreferido())) {
+				if (usuario.getPresupuesto() >= atraccion.getPrecio() && usuario.getTiempo() >= atraccion.getTiempo() ) {
 
 					System.out.println(atraccion.toString());
 					System.out.println("Acepta sugerencia? Ingrese S o N");
@@ -159,7 +158,7 @@ public class Main {
 				Promocion promocion = (Promocion) itPromoRestantes.next();
 
 				if (usuario.getPresupuesto() >= promocion.getPrecioPromocion()
-						&& usuario.getTiempo() >= promocion.getTiempoTotal() && !usuario.getTipoPreferido().equals(promocion.getTipo()) ) {
+						&& usuario.getTiempo() >= promocion.getTiempoTotal()  ) {
 					/** Sugerir promo **/
 					System.out.println(promocion.toString());
 					System.out.println("Acepta sugerencia? Ingrese S o N");
@@ -194,7 +193,7 @@ public class Main {
 			while (itAtraccionesRestantes.hasNext()) {
 				Atraccion atraccion = (Atraccion) itAtraccionesRestantes.next();
 
-				if (usuario.getPresupuesto() >= atraccion.getPrecio() && usuario.getTiempo() >= atraccion.getTiempo() && !usuario.getTipoPreferido().equals(atraccion.getTipo())) {
+				if (usuario.getPresupuesto() >= atraccion.getPrecio() && usuario.getTiempo() >= atraccion.getTiempo()) {
 					System.out.println(atraccion.toString());
 					System.out.println("Acepta sugerencia? Ingrese S o N");
 					String respuesta = scanner.nextLine();

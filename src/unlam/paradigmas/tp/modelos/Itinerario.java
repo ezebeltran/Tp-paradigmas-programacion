@@ -40,10 +40,32 @@ public class Itinerario {
 	public void sumarTiempo(double tiempo) {
 		this.tiempo += tiempo;
 	}
+	
+	public String mostrarPromociones() {
+		String promos="";
+		for (Promocion promocion : this.promociones) {
+			promos+=promocion.toString()+"\n";
+		}
+		return promos;
+	}
+	
+	public String mostrarAtracciones() {
+		String atracciones="";
+		for (Atraccion atraccion : this.atracciones) {
+			atracciones+=this.atracciones.toString()+"\n";
+		}
+		
+		return atracciones;
+	}
+	
 	@Override
 	public String toString() {
-		return "Itinerario [usuario=" + usuario + ", promociones=" + promociones + ", atracciones=" + atracciones
-				+ ", total=" + total + ", tiempo=" + tiempo + "]";
+		return "Itinerarios \n"
+				+ "Visitante:" + usuario + "\n"
+				+ "Promociones:\n" + this.mostrarPromociones() 
+				+ "Atracciones:\n" + this.mostrarAtracciones() 
+				+ "Total: " + total +"\n"
+				+ "Tiempo: " + tiempo+"\n" ;
 	}
 	
 	
