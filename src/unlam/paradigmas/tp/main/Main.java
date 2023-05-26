@@ -66,9 +66,8 @@ public class Main {
 		Collections.sort(promociones);
 		Collections.sort(atracciones);
 
-		/** Generar lista de sugenrencias **/
 
-		/** Iterar lista sugenrencia **/
+		/** Iterar lista usuarios **/
 
 		Iterator<Usuario> itUsuarios = usuarios.iterator();
 
@@ -81,6 +80,8 @@ public class Main {
 			itinerario.setUsuario(usuario);
 			
 			System.out.println("Nombre de visitante: " + usuario.getNombre()+ "\n");
+			
+			/**Iterar lista promociones preferidas**/
 
 			Iterator<Promocion> itPromoPref = promociones.iterator();
 
@@ -115,6 +116,8 @@ public class Main {
 
 			
 			}
+			
+			/**Iterar lista atracciones preferidas**/
 
 			Iterator<Atraccion> itAtraccionesPref = atracciones.iterator();
 
@@ -147,6 +150,8 @@ public class Main {
 
 				
 			}
+			
+			/**Iterar lista promociones preferidas**/
 
 			Iterator<Promocion> itPromoRestantes = promociones.iterator();
 
@@ -154,7 +159,7 @@ public class Main {
 				Promocion promocion = (Promocion) itPromoRestantes.next();
 
 				if (usuario.getPresupuesto() >= promocion.getPrecioPromocion()
-						&& usuario.getTiempo() >= promocion.getTiempoTotal()) {
+						&& usuario.getTiempo() >= promocion.getTiempoTotal() && !usuario.getTipoPreferido().equals(promocion.getTipo()) ) {
 					/** Sugerir promo **/
 					System.out.println(promocion.toString());
 					System.out.println("Acepta sugerencia? Ingrese S o N");
@@ -182,12 +187,14 @@ public class Main {
 				
 			}
 
+			/**Iterar lista atracciones restantes**/
+			
 			Iterator<Atraccion> itAtraccionesRestantes = atracciones.iterator();
 
 			while (itAtraccionesRestantes.hasNext()) {
 				Atraccion atraccion = (Atraccion) itAtraccionesRestantes.next();
 
-				if (usuario.getPresupuesto() >= atraccion.getPrecio() && usuario.getTiempo() >= atraccion.getTiempo()) {
+				if (usuario.getPresupuesto() >= atraccion.getPrecio() && usuario.getTiempo() >= atraccion.getTiempo() && !usuario.getTipoPreferido().equals(atraccion.getTipo())) {
 					System.out.println(atraccion.toString());
 					System.out.println("Acepta sugerencia? Ingrese S o N");
 					String respuesta = scanner.nextLine();
