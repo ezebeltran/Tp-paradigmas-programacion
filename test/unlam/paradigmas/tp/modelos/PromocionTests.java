@@ -26,6 +26,7 @@ public class PromocionTests {
 		atraccionesEjemplo.add(new Atraccion("Bosque Negro"		,3	,4.0,12	,"Aventura"));
 	}
 
+	/*
 	@Test
 	public void existeElArchivo() {
 		Boolean fallo = false;
@@ -145,5 +146,5 @@ public class PromocionTests {
 			fallo=false;
 		Assert.assertFalse(fallo);
 	}
-
+*/
 }

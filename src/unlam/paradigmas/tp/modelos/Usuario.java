@@ -2,22 +2,29 @@ package unlam.paradigmas.tp.modelos;
 
 public class Usuario {
 	private String nombre;
-	private float presupuesto;
-	private float tiempoDisponible;
+	private double presupuesto;
+	private double tiempoDisponible;
 	private String tipoPreferido;
 	//Itinerario?
 	
 	//Constructor
-	
-	public float obtenerPresupuesto() {
-		return this.presupuesto;
+	public Usuario(String nombre, float presupuesto, float tiempoDisponible, String tipoPreferido) {
+		this.nombre = nombre;
+		this.presupuesto = presupuesto;
+		this.tiempoDisponible = tiempoDisponible;
+		this.tipoPreferido = tipoPreferido;
 	}
 	
-	public float obtenerTiempo() {
+	
+	public double getPresupuesto() {
+		return this.presupuesto;
+	}
+
+	public double getTiempo() {
 		return this.tiempoDisponible;
 	}
 	
-	public String obtenerTipoPreferido() {
+	public String getTipoPreferido() {
 		return this.tipoPreferido;
 	}
 	

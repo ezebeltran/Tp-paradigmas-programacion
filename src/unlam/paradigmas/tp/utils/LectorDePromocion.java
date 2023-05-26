@@ -64,10 +64,10 @@ public class LectorDePromocion {
 					promociones.add(new Porcentual(atracciones, nombrePaquete, descuento));
 					break;
 				case "Absoluta":
-					promociones.add(new Absoluta(atracciones, nombrePaquete, descuento));
+					//promociones.add(new Absoluta(atracciones, nombrePaquete, descuento));
 					break;
 				case "Combo":
-					promociones.add(new Combo(atracciones, nombrePaquete, descuento));
+					//promociones.add(new Combo(atracciones, nombrePaquete, descuento));
 					break;
 				default:
 					break;
@@ -89,7 +89,7 @@ public class LectorDePromocion {
 		Iterator<Atraccion> it = atracciones.iterator();
 		while (it.hasNext()) {
 			Atraccion elemento = it.next();
-			if (elemento.obtenerNombre().equals(nombreAtraccion) ) {
+			if (elemento.getNombre().equals(nombreAtraccion) ) {
 				encontrado = elemento;
 				break;
 			}

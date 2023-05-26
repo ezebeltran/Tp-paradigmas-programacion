@@ -16,7 +16,7 @@ public class GeneradorDeSugerencia {
 		Iterator<Atraccion> it = atraccionesPrincipales.iterator();
 		while (it.hasNext()) {
 			Atraccion elemento = it.next();
-			if (elemento.obtenerNombre().equals(nombre) ) {
+			if (elemento.getNombre().equals(nombre) ) {
 				encontrado = elemento;
 				break;
 			}

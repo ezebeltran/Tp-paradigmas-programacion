@@ -6,23 +6,43 @@ import unlam.paradigmas.tp.utils.ColorC;
 
 public class Combo extends Promocion {
 	
-	//private Atraccion atraccionGratis;
+	private List<Atraccion> atraccionesGratis;
 
-	public Combo(List<Atraccion> atracciones, String tipo, double descuento) {
-		super(atracciones, tipo, descuento);
+	public Combo(List<Atraccion> atracciones, String tipo, List<Atraccion> atraccionesGratis) {
+		super(atracciones, tipo);
 		
-		Atraccion atraccionGratis= atracciones.get(atracciones.size() - 1);
+		this.atraccionesGratis= atraccionesGratis;
+		this.precioPromocion = this.precioNormal; // antes de cargar el precio de las gratis
 		
-		this.precioConDescuento = this.precioSinDescuento - atraccionGratis.obtenerCosto();
+		for (Atraccion atraccion : atraccionesGratis) {
+			this.precioNormal += atraccion.getCosto();
+		}
 		
+		for (Atraccion atraccion : atraccionesGratis) {
+			this.tiempoTotal += atraccion.getTiempo();
+		}
+		
+	}
+	
+	@Override
+	public boolean hayAtraccionSinCupo() {
+		
+		if(super.hayAtraccionSinCupo())
+			return true;
+		
+		for (Atraccion atraccion : this.atraccionesGratis) {
+			if(atraccion.getCupo()==0)
+				return true;
+		}
+		return false;
 	}
 
 	@Override
 	public String toString() {
-		return ColorC.TEXT_RED
-				+"Pack "+ this.obtenerTipo() + " con descuento AxB "
-				+"[" + super.toString() + "]\n"
-				+ColorC.RESET;
+		return 
+				"Promocion "+ this.getTipo() + " con descuento AxB\n"
+				 + super.toString() 
+				;
 	}
 
 }

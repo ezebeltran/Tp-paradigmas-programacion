@@ -2,7 +2,7 @@ package unlam.paradigmas.tp.modelos;
 
 import unlam.paradigmas.tp.utils.ColorC;
 
-public class Atraccion {
+public class Atraccion implements Comparable<Atraccion> {
 	private String nombre;
 	private Integer costo;
 	private Double tiempo;
@@ -27,6 +27,10 @@ public class Atraccion {
 		result = prime * result + ((tiempo == null) ? 0 : tiempo.hashCode());
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		return result;
+	}
+
+	public Integer getCupo() {
+		return cupo;
 	}
 
 	@Override
@@ -79,32 +83,43 @@ public class Atraccion {
 		return true;
 	}
 
-	public String obtenerNombre() {
+	public String getNombre() {
 		return this.nombre;
 	}
 
-	public String obtenerTipo() {
+	public String getTipo() {
 		return this.tipo;
 	}
 
-	public Integer obtenerCosto() {
+	public Integer getCosto() {
 		return this.costo;
 	}
 
-	public Double obtenerTiempo() {
+	public Double getTiempo() {
 		return this.tiempo;
 	}
 
 	@Override
 	public String toString() {
 		return ColorC.TEXT_BLUE 
-				+ "\n\tAtraccion [nombre=" 
+				+ "\n\tAtraccion\n"
+				+ "-Nombre: [" 
 				+ ColorC.TEXT_WHITE 
 				+ nombre 
 				+ ColorC.TEXT_BLUE
-				+ ", costo=" + costo + ", tiempo=" + tiempo 
-				+ ", cupo="	+ cupo + ", tipo=" + tipo + "]" 
+				+ "]\n "
+				+ "-Precio=" + costo + "\n"
+				+ " -Duracion: " + tiempo 
 				+ ColorC.TEXT_RED;
 	}
+
+	@Override
+	public int compareTo(Atraccion otraAtraccion) {
+		int res= Integer.compare(this.costo, otraAtraccion.costo);
+		if(res!=0)
+			return res;
+		
+		return Double.compare(this.tiempo, otraAtraccion.tiempo);
+}
 
 }
