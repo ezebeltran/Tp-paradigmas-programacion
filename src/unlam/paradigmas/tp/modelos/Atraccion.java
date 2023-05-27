@@ -1,8 +1,10 @@
 package unlam.paradigmas.tp.modelos;
 
+import java.util.Scanner;
+
 import unlam.paradigmas.tp.utils.ColorC;
 
-public class Atraccion implements Comparable<Atraccion> {
+public class Atraccion implements Comparable<Atraccion>, Sugerencia {
 	private String nombre;
 	private Integer precio;
 	private Double tiempo;
@@ -118,5 +120,19 @@ public class Atraccion implements Comparable<Atraccion> {
 		
 		return Double.compare(this.tiempo, otraAtraccion.tiempo);
 }
+
+	@Override
+	public boolean sugerir() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println(this.toString());
+		System.out.println("Acepta sugerencia? Ingrese S o N");
+		String respuesta = scanner.nextLine();
+		
+		if (respuesta.equals("S") || respuesta.equals("s")) {
+			System.out.println("¡Aceptada!");
+			return true;
+		}
+		return false;
+	}
 
 }

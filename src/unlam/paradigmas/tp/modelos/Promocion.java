@@ -1,10 +1,11 @@
 package unlam.paradigmas.tp.modelos;
 
 import java.util.List;
+import java.util.Scanner;
 
 import unlam.paradigmas.tp.utils.ColorC;
 
-public abstract class Promocion implements Comparable<Promocion> {
+public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 
 	protected String nombre;
 	protected List<Atraccion> atracciones;
@@ -150,5 +151,20 @@ public abstract class Promocion implements Comparable<Promocion> {
 			return res;
 		
 		return Double.compare(this.tiempoTotal, otraPromo.tiempoTotal);
+	}
+	
+	@Override
+	public boolean sugerir() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println(this.toString());
+		System.out.println("Acepta sugerencia? Ingrese S o N");
+		String respuesta = scanner.nextLine();
+		
+		if (respuesta.equals("S") || respuesta.equals("s")) {
+			System.out.println("¡Aceptada!");
+			return true;
+		}
+		return false;
+
 	}
 }
