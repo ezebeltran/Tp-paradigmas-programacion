@@ -6,12 +6,13 @@ import unlam.paradigmas.tp.utils.ColorC;
 
 public class Porcentual extends Promocion {
 	
-	private double descuento;
+	private int descuento;
 	
-	public Porcentual(String nombre, List<Atraccion> atracciones, String tipo, double descuento) {
+	public Porcentual(String nombre, List<Atraccion> atracciones, String tipo, int descuento) {
 		super(nombre, atracciones, tipo);
 		
-		this.descuento=this.precioNormal-(this.precioNormal*descuento/100);
+		this.descuento=descuento;
+		this.precioPromocion=this.precioNormal-(this.precioNormal*descuento/100);
 	}
 
 	@Override
