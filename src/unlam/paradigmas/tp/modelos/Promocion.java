@@ -57,6 +57,21 @@ public abstract class Promocion implements Comparable<Promocion> {
 		return false;
 	}
 	
+	/**
+	 * Verifica si la promocion tiene alguna atraccion de algun tipo
+	 * @param tipoAtraccion
+	 * @return
+	 */
+	public boolean algunaAtraccionTipo(String tipoAtraccion) {
+		for (Atraccion atraccion : atracciones) {
+			if(atraccion.getTipo().equals(tipoAtraccion))
+				return true;
+		}
+		
+		return false;
+		
+	}
+	
 	//public abstract void mostrarPromocion();
 
 	/*@Override
@@ -107,10 +122,10 @@ public abstract class Promocion implements Comparable<Promocion> {
 	private String listAtraccionesAString() {
 		String res="";
 		for (Atraccion atraccion : atracciones) {
-			res=res+", "+atraccion.getNombre();
+			res=res+atraccion.getNombre()+", ";
 		}
 		
-		return res.substring(0, res.length()-1);
+		return res.substring(0, res.length()-2);
 	}
 	
 	

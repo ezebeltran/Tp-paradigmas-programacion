@@ -52,7 +52,7 @@ public class Itinerario {
 	public String mostrarAtracciones() {
 		String atracciones="";
 		for (Atraccion atraccion : this.atracciones) {
-			atracciones+=this.atracciones.toString()+"\n";
+			atracciones+=atraccion.toString()+"\n";
 		}
 		
 		return atracciones;
@@ -60,10 +60,10 @@ public class Itinerario {
 	
 	@Override
 	public String toString() {
-		return "Itinerarios \n"
-				+ "Visitante:" + usuario + "\n"
-				+ "Promociones:\n" + this.mostrarPromociones() 
-				+ "Atracciones:\n" + this.mostrarAtracciones() 
+		return 
+				"Visitante: " + usuario.getNombre() + "\n"
+				 + this.mostrarPromociones() 
+				 + this.mostrarAtracciones() 
 				+ "Total: " + total +"\n"
 				+ "Tiempo: " + tiempo+"\n" ;
 	}
