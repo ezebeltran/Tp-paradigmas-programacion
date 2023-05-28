@@ -122,8 +122,7 @@ public class Atraccion implements Comparable<Atraccion>, Sugerencia {
 }
 
 	@Override
-	public boolean sugerir() {
-		Scanner scanner = new Scanner(System.in);
+	public boolean sugerir(Scanner scanner) {
 		System.out.println(this.toString());
 		System.out.println("Acepta sugerencia? Ingrese S o N");
 		String respuesta = scanner.nextLine();

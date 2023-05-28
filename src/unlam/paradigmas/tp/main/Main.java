@@ -97,7 +97,7 @@ public class Main {
 //					String respuesta = scanner.nextLine();
 
 					//if (respuesta.equals("S") || respuesta.equals("s")) {
-					if (promocion.sugerir()) {
+					if (promocion.sugerir(scanner)) {
 						promosAceptadas.add(promocion);
 						
 						usuario.reducirPresupuesto(promocion.getPrecioPromocion());
@@ -132,7 +132,7 @@ public class Main {
 //					String respuesta = scanner.nextLine();
 //
 //					if (respuesta.equals("S") || respuesta.equals("s")) {
-					if (atraccion.sugerir()) {
+					if (atraccion.sugerir(scanner)) {
 						atraccionesAceptadas.add(atraccion);
 						
 						usuario.reducirPresupuesto(atraccion.getPrecio());
@@ -168,7 +168,7 @@ public class Main {
 //					String respuesta = scanner.nextLine();
 //
 //					if (respuesta.equals("S") || respuesta.equals("s")) {
-					if (promocion.sugerir()) {
+					if (promocion.sugerir(scanner)) {
 						promosAceptadas.add(promocion);
 						
 						usuario.reducirPresupuesto(promocion.getPrecioPromocion());
@@ -203,7 +203,7 @@ public class Main {
 //					String respuesta = scanner.nextLine();
 //
 //					if (respuesta.equals("S") || respuesta.equals("s")) {
-					if (atraccion.sugerir()) {
+					if (atraccion.sugerir(scanner)) {
 						atraccionesAceptadas.add(atraccion);
 						
 						usuario.reducirPresupuesto(atraccion.getPrecio());
