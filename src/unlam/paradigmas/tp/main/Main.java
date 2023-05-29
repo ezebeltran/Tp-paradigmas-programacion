@@ -228,17 +228,21 @@ public class Main {
 			itinerario.setPromociones(promosAceptadas);
 			itinerario.setAtracciones(atraccionesAceptadas);
 			
+			System.out.println("Itinerario\n");
+			System.out.println(itinerario.toString());
+			System.out.println("----------------------------------------------------------------------------------\n");
+			
 			itinerarios.add(itinerario);
 		}
 
 		scanner.close();
 		/** Armar lista itinerario por usuario **/
 		
-		System.out.println("Itinerarios\n");
+		/*System.out.println("Itinerarios\n");
 		for (Itinerario itinerario2 : itinerarios) {
 			System.out.println(itinerario2.toString());
 			System.out.println("----------------------------------------------------------------------------------\n");
-		}
+		}*/
 	}
 
 }

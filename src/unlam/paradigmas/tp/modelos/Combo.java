@@ -36,6 +36,21 @@ public class Combo extends Promocion {
 		}
 		return false;
 	}
+	
+	@Override
+	public boolean algunaAtraccionTipo(String tipoAtraccion) {
+		
+		if(super.algunaAtraccionTipo(tipoAtraccion))
+			return true;
+		
+		for (Atraccion atraccion : this.atraccionesGratis) {
+			if(atraccion.getTipo().equals(tipoAtraccion))
+				return true;
+		}
+		
+		return false;
+		
+	}
 
 	@Override
 	public String toString() {
