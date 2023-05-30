@@ -1,0 +1,20 @@
+Moria,10,2,6,Aventura
+Minas Tirith,5,2.5,25,Paisaje
+La Comarca,3,6.5,150,Degustacion
+Mordor,25,3,4,Aventura
+Abismo de Helm,5,2,15,Paisaje
+Lothlorien ,35,1,30,Degustacion
+Erebor,12,3,32,Paisaje
+Bosque Negro,3,4,12,Aventura
+Hobbiton,5,1.5,25,Degustacion
+Edoras,30,3.5,5,Aventura
+Senderos de los Muertos,8,2,15,Paisaje
+Los Argonah ,25,4,20,Paisaje
+La cima de los vientos,20,3,20,Paisaje
+Gollums pool,12,4,15,Aventura
+Rivendell y jardines de Isengard,15,2,12,Paisaje
+Rio de Rohan,20,1.5,10,Aventura
+Campamento de Ithilien,9,8,20,Aventura
+Fuerte Bruinen,6,2,50,Degustacion
+Tierra Media,7,1.5,100,Degustacion
+Campos de Pelennor,8,2,30,Paisaje

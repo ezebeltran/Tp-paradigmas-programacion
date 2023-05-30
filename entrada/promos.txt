@@ -1,0 +1,21 @@
+1,PACK Aventura,Procentual,10
+2,Moria,10,2,6,Aventura
+2,Mordor,25,3,4,Aventura
+2,Edoras,30,3.5,5,Aventura
+1,PACK Mix,Porcentual,20,
+2,Rio de Rohan,20,1.5,10,Aventura
+2,Campamento de Ithilien,9,8,20,Aventura
+2,Fuerte Bruinen,6,2,50,Degustacion
+1,PACK River,Absoluta,
+2,Los Argonah ,25,4,20,Paisaje
+2,Rio de Rohan,20,1.5,10,Aventura
+2,Gollums pool,12,4,15,Aventura
+1,Pack 1,Porcentual,15
+2,Erebor,12,3,32,Paisaje
+2,Tierra Media,7,1.5,100,Degustacion
+2,Campos de Pelennor,8,2,30,Paisaje
+1,Pack 2,Absoluta,
+2,La cima de los vientos,20,3,20,Paisaje
+2,Lothlorien ,35,1,30,Degustacion
+2,Abismo de Helm,5,2,15,Paisaje
+2,La Comarca,3,6.5,150,Degustacion
