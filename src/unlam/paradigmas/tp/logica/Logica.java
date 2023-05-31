@@ -27,7 +27,7 @@ public class Logica {
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 		usuarios.add(new Usuario("frodo", 100, 12, "Aventura"));
 		usuarios.add(new Usuario("Galardiel", 100, 5, "Paisaje"));
-		usuarios.add(new Usuario("Sam", 36, 8, "Degustación"));
+		usuarios.add(new Usuario("Sam", 36, 8, "Degustaciï¿½n"));
 
 		return usuarios;
 */
@@ -40,7 +40,7 @@ public class Logica {
 		    // Crear un objeto BufferedReader al que se le pasa 
 		    //   un objeto FileReader con el nombre del fichero
 			buffeReader = new BufferedReader(new FileReader(Archivo));
-		    // Leer la primera línea, guardando en un String
+		    // Leer la primera lï¿½nea, guardando en un String
 		    String texto = buffeReader.readLine();
 	// Repetir mientras no se llegue al final del fichero
 		    while(texto != null) {
@@ -49,16 +49,16 @@ public class Logica {
 			    String[] splitText = texto.split(",");
 			    if (splitText.length == 4)
 			    usuarios.add( new Usuario( splitText[0],Float.valueOf( splitText[1]).floatValue(),Float.valueOf(splitText[2]).floatValue(), splitText[3] ));    
-		        // Leer la siguiente línea
+		        // Leer la siguiente lï¿½nea
 		        texto = buffeReader.readLine();
 		    }
 		}
-		// Captura de excepción por fichero no encontrado
+		// Captura de excepciï¿½n por fichero no encontrado
 		catch (FileNotFoundException ex) {
 		    System.out.println("Error: Fichero no encontrado");
 		    ex.printStackTrace();
 		}
-		// Captura de cualquier otra excepción
+		// Captura de cualquier otra excepciï¿½n
 		catch(Exception ex) {
 		    System.out.println("Error de lectura del fichero");
 		    ex.printStackTrace();
@@ -82,39 +82,141 @@ public class Logica {
 		
 	}
 
+	public static List<Promocion> getPromocionesArchivoRuta(String rutaArchivo) {
+		
+		
+//		List<Promocion> promociones = new ArrayList<Promocion>();
+//
+//		List<Atraccion> atraccionesPackAventura = new ArrayList<Atraccion>();
+//		atraccionesPackAventura.add(new Atraccion("Bosque Negro", 3, 4.0, 12, "Aventura"));
+//		atraccionesPackAventura.add(new Atraccion("Mordor", 25, 3.0, 4, "Aventura"));
+//
+//		Promocion packAventura = new Porcentual("Pack aventura", atraccionesPackAventura, "Porcentual", 20);
+//
+//		promociones.add(packAventura);
+//
+//		List<Atraccion> atraccionesPackDegustacion = new ArrayList<Atraccion>();
+//		atraccionesPackDegustacion.add(new Atraccion("LothlÃ³rien", 35, 1.0, 30, "DegustaciÃ³n"));
+//		atraccionesPackDegustacion.add(new Atraccion("La Comarca", 3, 6.5, 150, "DegustaciÃ³n"));
+//
+//		Promocion packDegustacion = new Absoluta("Pack degustacion", atraccionesPackDegustacion, "Absoluta");
+//
+//		promociones.add(packDegustacion);
+//
+//		List<Atraccion> atraccionesPackPaisajes = new ArrayList<Atraccion>();
+//		List<Atraccion> atraccionesPackPaisajesGratis = new ArrayList<Atraccion>();
+//		atraccionesPackPaisajes.add(new Atraccion("Minas Tirith", 5, 2.5, 25, "Paisaje"));
+//		atraccionesPackPaisajes.add(new Atraccion("Abismo de Helm", 5, 2.0, 15, "Paisaje"));
+//		atraccionesPackPaisajesGratis.add(new Atraccion("Erebor", 12, 3.0, 32, "Paisaje"));
+//
+//		Promocion packPaisaje = new Combo("Pack paisaje", atraccionesPackPaisajes, "Combo",
+//				atraccionesPackPaisajesGratis);
+//
+//		promociones.add(packPaisaje);
+//
+//		return promociones;
+		 
+		
+		
+		String Archivo = rutaArchivo;
+		List<Promocion> promociones = new ArrayList<Promocion>();
+		List<Atraccion> atracciones = new ArrayList<Atraccion>();
+
+		// Declarar una variable BufferedReader
+		BufferedReader buffeReader = null;
+		try {
+			// Crear un objeto BufferedReader al que se le pasa
+			// un objeto FileReader con el nombre del fichero
+			buffeReader = new BufferedReader(new FileReader(Archivo));
+			// Leer la primera lï¿½nea, guardando en un String
+			String texto = buffeReader.readLine();
+			// Repetir mientras no se llegue al final del fichero
+			String[] splitTextHdr = texto.split(",");
+			String[] splitTextHdrNew = null;
+			while (texto != null) {
+				// Separamos los datos
+				// Cargamos la lista de usuarios
+				String[] splitText = texto.split(",");
+				if (!splitText[0].equals("1") && !splitTextHdrNew[1].equals(splitTextHdr[1])) {
+
+					if (splitTextHdr[2].equals("Porcentual")) {
+						promociones.add(new Porcentual(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
+								"Porcentual", Integer.parseInt(splitTextHdr[3])));
+					} else {
+						if (splitTextHdr[2].equals("Absoluta")) {
+							promociones.add(new Absoluta(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
+									"Absoluta", Integer.parseInt(splitTextHdr[3])));
+						}
+						else {
+							if (splitTextHdr[2].equals("Combo")) {
+								promociones.add(new Combo(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
+										"Combo"));
+							}
+						}
+					}
+
+					splitTextHdr = splitTextHdrNew;
+					atracciones.clear();
+
+				}
+				if (splitText[0].equals("1")) {
+					splitTextHdrNew = texto.split(",");
+
+				} else {
+					atracciones.add(new Atraccion(splitText[1], Integer.parseInt(splitText[2]),
+							Double.parseDouble(splitText[3]), Integer.parseInt(splitText[4]), splitText[5]));
+				}
+
+				// Leer la siguiente lï¿½nea
+				texto = buffeReader.readLine();
+			}
+			if (!atracciones.isEmpty()) {
+				if (splitTextHdr[2].equals("Porcentual")) {
+					promociones.add(new Porcentual(splitTextHdr[1], new ArrayList<Atraccion>(atracciones), "Porcentual",
+							Integer.parseInt(splitTextHdr[3])));
+				} else {
+					if (splitTextHdr[2].equals("Absoluta")) {
+						promociones.add(new Absoluta(splitTextHdr[1], new ArrayList<Atraccion>(atracciones), "Absoluta",
+								Integer.parseInt(splitTextHdr[3])));
+					}
+					else {
+						if (splitTextHdr[2].equals("Combo")) {
+							promociones.add(new Combo(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
+									"Combo"));
+						}
+					}
+				}
+			}
+
+		}
+		// Captura de excepciï¿½n por fichero no encontrado
+		catch (FileNotFoundException ex) {
+			System.out.println("Error: Fichero no encontrado");
+			ex.printStackTrace();
+		}
+		// Captura de cualquier otra excepciï¿½n
+		catch (Exception ex) {
+			System.out.println("Error de lectura del fichero");
+			ex.printStackTrace();
+		}
+		// Asegurar el cierre del fichero en cualquier caso
+		finally {
+
+			try {
+				// Cerrar el fichero si se ha podido abrir
+				if (buffeReader != null) {
+					buffeReader.close();
+				}
+			} catch (Exception ex) {
+				System.out.println("Error al cerrar el fichero");
+				ex.printStackTrace();
+			}
+		}
+		return promociones;
+	}
+	
 	public static List<Promocion> getPromocionesAchivo() {
 
-		/*
-		List<Promocion> promociones = new ArrayList<Promocion>();
-
-		List<Atraccion> atraccionesPackAventura = new ArrayList<Atraccion>();
-		atraccionesPackAventura.add(new Atraccion("Bosque Negro", 3, 4.0, 12, "Aventura"));
-		atraccionesPackAventura.add(new Atraccion("Mordor", 25, 3.0, 4, "Aventura"));
-
-		Promocion packAventura = new Porcentual("Pack aventura",atraccionesPackAventura, "Porcentual", 20);
-
-		promociones.add(packAventura);
-		
-		List<Atraccion> atraccionesPackDegustacion = new ArrayList<Atraccion>();
-		atraccionesPackDegustacion.add(new Atraccion("LothlÃ³rien", 35, 1.0, 30, "DegustaciÃ³n"));
-		atraccionesPackDegustacion.add(new Atraccion("La Comarca", 3, 6.5, 150, "DegustaciÃ³n"));
-
-		Promocion packDegustacion = new Absoluta("Pack degustacion", atraccionesPackDegustacion, "Absoluta");
-
-		promociones.add(packDegustacion);
-
-		List<Atraccion> atraccionesPackPaisajes = new ArrayList<Atraccion>();
-		List<Atraccion> atraccionesPackPaisajesGratis = new ArrayList<Atraccion>();
-		atraccionesPackPaisajes.add(new Atraccion("Minas Tirith", 5, 2.5, 25, "Paisaje"));
-		atraccionesPackPaisajes.add(new Atraccion("Abismo de Helm", 5, 2.0, 15, "Paisaje"));
-		atraccionesPackPaisajesGratis.add(new Atraccion("Erebor", 12, 3.0, 32, "Paisaje"));
-		
-		Promocion packPaisaje = new Combo("Pack paisaje", atraccionesPackPaisajes, "Combo", atraccionesPackPaisajesGratis);
-
-		promociones.add(packPaisaje);
-		
-		return promociones;
-*/
 		String Archivo = RUTA_PROMOS;
 	    List<Promocion> promociones = new ArrayList<Promocion>();
 	    List<Atraccion> atracciones = new ArrayList<Atraccion>();
@@ -125,7 +227,7 @@ public class Logica {
 		    // Crear un objeto BufferedReader al que se le pasa 
 		    //   un objeto FileReader con el nombre del fichero
 			buffeReader = new BufferedReader(new FileReader(Archivo));
-		    // Leer la primera línea, guardando en un String
+		    // Leer la primera lï¿½nea, guardando en un String
 		    String texto = buffeReader.readLine();
 	// Repetir mientras no se llegue al final del fichero
 		    String[] splitTextHdr =  texto.split(",");
@@ -137,14 +239,21 @@ public class Logica {
 			    if (!splitText[0].equals("1")&& !splitTextHdrNew[1].equals(splitTextHdr[1])) 
 			    {
 
-				   	 if(splitTextHdr[2].equals("Porcentual")) {
-			    	   promociones.add(new Porcentual(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),"Porcentual",Integer.parseInt(splitTextHdr[3]) )) ;  		    	
-			    	       }
-			    	 else{
-			    		 if(splitTextHdr[2].equals("Absoluta"));{
-			    			  promociones.add(new Absoluta(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),"Absotula")) ;  		    	
-			    		      }    
-			    		 }
+			    	if (splitTextHdr[2].equals("Porcentual")) {
+						promociones.add(new Porcentual(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
+								"Porcentual", Integer.parseInt(splitTextHdr[3])));
+					} else {
+						if (splitTextHdr[2].equals("Absoluta")) {
+							promociones.add(new Absoluta(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
+									"Absoluta", Integer.parseInt(splitTextHdr[3])));
+						}
+						else {
+							if (splitTextHdr[2].equals("Combo")) {
+								promociones.add(new Combo(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
+										"Combo"));
+							}
+						}
+					}
 
 			    	splitTextHdr = splitTextHdrNew;			    	 
 			    	 atracciones.clear();
@@ -159,17 +268,35 @@ public class Logica {
 			    	atracciones.add(new Atraccion( splitText[1],Integer.parseInt( splitText[2]),Double.parseDouble(splitText[3]), Integer.parseInt(splitText[4]),splitText[5]));
 			     }
 			    
-			        // Leer la siguiente línea
+			        // Leer la siguiente lï¿½nea
 			        texto = buffeReader.readLine();    
-			    }  
+			    }
+		    
+		    if (!atracciones.isEmpty()) {
+				if (splitTextHdr[2].equals("Porcentual")) {
+					promociones.add(new Porcentual(splitTextHdr[1], new ArrayList<Atraccion>(atracciones), "Porcentual",
+							Integer.parseInt(splitTextHdr[3])));
+				} else {
+					if (splitTextHdr[2].equals("Absoluta")) {
+						promociones.add(new Absoluta(splitTextHdr[1], new ArrayList<Atraccion>(atracciones), "Absoluta",
+								Integer.parseInt(splitTextHdr[3])));
+					}
+					else {
+						if (splitTextHdr[2].equals("Combo")) {
+							promociones.add(new Combo(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
+									"Combo"));
+						}
+					}
+				}
+			}
 		    
 		}
-		// Captura de excepción por fichero no encontrado
+		// Captura de excepciï¿½n por fichero no encontrado
 		catch (FileNotFoundException ex) {
 		    System.out.println("Error: Fichero no encontrado");
 		    ex.printStackTrace();
 		}
-		// Captura de cualquier otra excepción
+		// Captura de cualquier otra excepciï¿½n
 		catch(Exception ex) {
 		    System.out.println("Error de lectura del fichero");
 		    ex.printStackTrace();
@@ -193,19 +320,7 @@ public class Logica {
 
 	public static List<Atraccion> getAtraccionesAchivo() {
 
-		/*
-		List<Atraccion> atracciones = new ArrayList<Atraccion>();
-		atracciones.add(new Atraccion("Moria", 10, 2.0, 6, "Aventura"));
-		atracciones.add(new Atraccion("Minas Tirith", 5, 2.5, 25, "Paisaje"));
-		atracciones.add(new Atraccion("La Comarca", 3, 6.5, 150, "DegustaciÃ³n"));
-		atracciones.add(new Atraccion("Mordor", 25, 3.0, 4, "Aventura"));
-		atracciones.add(new Atraccion("Abismo de Helm", 5, 2.0, 15, "Paisaje"));
-		atracciones.add(new Atraccion("LothlÃ³rien", 35, 1.0, 30, "DegustaciÃ³n"));
-		atracciones.add(new Atraccion("Erebor", 12, 3.0, 32, "Paisaje"));
-		atracciones.add(new Atraccion("Bosque Negro", 3, 4.0, 12, "Aventura"));
-
-		return atracciones;
-*/
+		
 		String Archivo = RUTA_ATRACCIONES;
 		List<Atraccion> atracciones = new ArrayList<Atraccion>();
 
@@ -215,7 +330,7 @@ public class Logica {
 		    // Crear un objeto BufferedReader al que se le pasa 
 		    //   un objeto FileReader con el nombre del fichero
 			buffeReader = new BufferedReader(new FileReader(Archivo));
-		    // Leer la primera línea, guardando en un String
+		    // Leer la primera lï¿½nea, guardando en un String
 		    String texto = buffeReader.readLine();
 	// Repetir mientras no se llegue al final del fichero
 		    while(texto != null) {
@@ -224,16 +339,16 @@ public class Logica {
 			    String[] splitText = texto.split(",");
 			    if (splitText.length == 5)
 			    atracciones.add( new Atraccion( splitText[0],Integer.parseInt( splitText[1]),Double.parseDouble(splitText[2]), Integer.parseInt(splitText[3]),splitText[4]));    
-		        // Leer la siguiente línea
+		        // Leer la siguiente lï¿½nea
 		        texto = buffeReader.readLine();
 		    }
 		}
-		// Captura de excepción por fichero no encontrado
+		// Captura de excepciï¿½n por fichero no encontrado
 		catch (FileNotFoundException ex) {
 		    System.out.println("Error: Fichero no encontrado");
 		    ex.printStackTrace();
 		}
-		// Captura de cualquier otra excepción
+		// Captura de cualquier otra excepciï¿½n
 		catch(Exception ex) {
 		    System.out.println("Error de lectura del fichero");
 		    ex.printStackTrace();

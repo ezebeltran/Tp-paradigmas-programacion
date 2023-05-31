@@ -1,1 +1,4 @@
-Paisaje,Combo,Minas Tirith,Abismo de Helm,Erebor,0
+1,PACK AXB,Combo
+2,Minas Tirith,5,2.5,25,Paisaje
+2,Abismo de Helm,5,2.0,15,Paisaje
+2,Erebor,12,3.0,32,Paisaje

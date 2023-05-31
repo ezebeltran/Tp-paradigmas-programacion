@@ -1,1 +1,4 @@
-Degustacion,Absoluta,Lothlórien,La Comarca,36
+1,PACK River,Absoluta,30
+2,Los Argonah,25,4,20,Paisaje
+2,Rio de Rohan,20,1.5,10,Aventura
+2,Gollums pool,12,4,15,Aventura

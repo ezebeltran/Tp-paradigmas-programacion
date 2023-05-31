@@ -107,7 +107,7 @@ public class Atraccion implements Comparable<Atraccion>, Sugerencia {
 			 "Atraccion\n"
 				+ "-Nombre: ["
 				+ nombre 
-				+ "]\n"
+				+ "("+tipo+")]\n"
 				+ "-Precio= $" + precio + "\n"
 				+ "-Duracion: " + tiempo + " horas\n";
 	}
@@ -128,10 +128,18 @@ public class Atraccion implements Comparable<Atraccion>, Sugerencia {
 		String respuesta = scanner.nextLine();
 		
 		if (respuesta.equals("S") || respuesta.equals("s")) {
-			System.out.println("¡Aceptada!");
+			System.out.println("ï¿½Aceptada!");
 			return true;
 		}
 		return false;
+	}
+
+	public void reducirCupo() {
+		this.cupo--;
+	}
+
+	public boolean tieneCupo() {
+		return this.cupo>0;
 	}
 
 }
