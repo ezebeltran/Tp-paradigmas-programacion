@@ -218,78 +218,80 @@ public class Logica {
 	public static List<Promocion> getPromocionesAchivo() {
 
 		String Archivo = RUTA_PROMOS;
-	    List<Promocion> promociones = new ArrayList<Promocion>();
-	    List<Atraccion> atracciones = new ArrayList<Atraccion>();
-	   
+		List<Promocion> promociones = new ArrayList<Promocion>();
+		List<Atraccion> atracciones = new ArrayList<Atraccion>();
+
 		// Declarar una variable BufferedReader
 		BufferedReader buffeReader = null;
 		try {
-		    // Crear un objeto BufferedReader al que se le pasa 
-		    //   un objeto FileReader con el nombre del fichero
+			// Crear un objeto BufferedReader al que se le pasa
+			// un objeto FileReader con el nombre del fichero
 			buffeReader = new BufferedReader(new FileReader(Archivo));
-		    // Leer la primera l�nea, guardando en un String
-		    String texto = buffeReader.readLine();
-	// Repetir mientras no se llegue al final del fichero
-		    String[] splitTextHdr =  texto.split(",");
-		    String[] splitTextHdrNew = null;
-		    while(texto != null) {
-		    //  Separamos los datos
-	// Cargamos la lista de usuarios	    	
-			    String[] splitText = texto.split(",");
-			    if (!splitText[0].equals("1")&& !splitTextHdrNew[1].equals(splitTextHdr[1])) 
-			    {
+			// Leer la primera l�nea, guardando en un String
+			String texto = buffeReader.readLine();
+			// Repetir mientras no se llegue al final del fichero
+			String[] splitTextHdr = texto.split(",");
+			String[] splitTextHdrNew = null;
+			while (texto != null) {
+				
+				if (texto.isEmpty()) {
+					texto = buffeReader.readLine();
+					continue;
+				}
+				
+				// Separamos los datos
+				// Cargamos la lista de usuarios
+				String[] splitText = texto.split(",");
+				if (
+						!splitText[0].equals("1") 
+						&& !splitTextHdrNew[1].equals(splitTextHdr[1])	) {
 
-			    	if (splitTextHdr[2].equals("Porcentual")) {
+					if (splitTextHdr[2].equals("Porcentual")) {
 						promociones.add(new Porcentual(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
 								"Porcentual", Integer.parseInt(splitTextHdr[3])));
 					} else {
 						if (splitTextHdr[2].equals("Absoluta")) {
 							promociones.add(new Absoluta(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
 									"Absoluta", Integer.parseInt(splitTextHdr[3])));
-						}
-						else {
+						} else {
 							if (splitTextHdr[2].equals("Combo")) {
-								promociones.add(new Combo(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
-										"Combo"));
+								promociones.add(
+										new Combo(splitTextHdr[1], new ArrayList<Atraccion>(atracciones), "Combo"));
 							}
 						}
 					}
 
-			    	splitTextHdr = splitTextHdrNew;			    	 
-			    	 atracciones.clear();
+					splitTextHdr = splitTextHdrNew;
+					atracciones.clear();
 
-			    	
-			    }
-			     if (splitText[0].equals("1")){
-			    	splitTextHdrNew = texto.split(",");
-			    	
-			    	}			    
-			     else{
-			    	atracciones.add(new Atraccion( splitText[1],Integer.parseInt( splitText[2]),Double.parseDouble(splitText[3]), Integer.parseInt(splitText[4]),splitText[5]));
-			     }
-			    
-			        // Leer la siguiente l�nea
-			        texto = buffeReader.readLine();    
-			    }
-		    
-		    if (!atracciones.isEmpty()) {
+				}
+				if (splitText[0].equals("1")) {
+					splitTextHdrNew = texto.split(",");
+
+				} else {
+					atracciones.add(new Atraccion(splitText[1], Integer.parseInt(splitText[2]),	Double.parseDouble(splitText[3]), Integer.parseInt(splitText[4]), splitText[5]));
+				}
+
+				// Leer la siguiente l�nea
+				texto = buffeReader.readLine();
+			}
+			if (!atracciones.isEmpty()) {
 				if (splitTextHdr[2].equals("Porcentual")) {
-					promociones.add(new Porcentual(splitTextHdr[1], new ArrayList<Atraccion>(atracciones), "Porcentual",
-							Integer.parseInt(splitTextHdr[3])));
+					promociones.add(new Porcentual(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
+							"Porcentual", Integer.parseInt(splitTextHdr[3])));
 				} else {
 					if (splitTextHdr[2].equals("Absoluta")) {
-						promociones.add(new Absoluta(splitTextHdr[1], new ArrayList<Atraccion>(atracciones), "Absoluta",
-								Integer.parseInt(splitTextHdr[3])));
-					}
-					else {
+						promociones.add(new Absoluta(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
+								"Absoluta", Integer.parseInt(splitTextHdr[3])));
+					} else {
 						if (splitTextHdr[2].equals("Combo")) {
-							promociones.add(new Combo(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
-									"Combo"));
+							promociones.add(
+									new Combo(splitTextHdr[1], new ArrayList<Atraccion>(atracciones), "Combo"));
 						}
 					}
 				}
 			}
-		    
+
 		}
 		// Captura de excepci�n por fichero no encontrado
 		catch (FileNotFoundException ex) {
