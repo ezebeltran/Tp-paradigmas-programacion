@@ -3,9 +3,13 @@ package unlam.paradigmas.tp.logica;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 import java.util.Set;
 
 import unlam.paradigmas.tp.modelos.Absoluta;
@@ -82,234 +86,102 @@ public class Logica {
 		
 	}
 
-	public static List<Promocion> getPromocionesArchivoRuta(String rutaArchivo) {
-		
-		
-//		List<Promocion> promociones = new ArrayList<Promocion>();
-//
-//		List<Atraccion> atraccionesPackAventura = new ArrayList<Atraccion>();
-//		atraccionesPackAventura.add(new Atraccion("Bosque Negro", 3, 4.0, 12, "Aventura"));
-//		atraccionesPackAventura.add(new Atraccion("Mordor", 25, 3.0, 4, "Aventura"));
-//
-//		Promocion packAventura = new Porcentual("Pack aventura", atraccionesPackAventura, "Porcentual", 20);
-//
-//		promociones.add(packAventura);
-//
-//		List<Atraccion> atraccionesPackDegustacion = new ArrayList<Atraccion>();
-//		atraccionesPackDegustacion.add(new Atraccion("Lothlórien", 35, 1.0, 30, "Degustación"));
-//		atraccionesPackDegustacion.add(new Atraccion("La Comarca", 3, 6.5, 150, "Degustación"));
-//
-//		Promocion packDegustacion = new Absoluta("Pack degustacion", atraccionesPackDegustacion, "Absoluta");
-//
-//		promociones.add(packDegustacion);
-//
-//		List<Atraccion> atraccionesPackPaisajes = new ArrayList<Atraccion>();
-//		List<Atraccion> atraccionesPackPaisajesGratis = new ArrayList<Atraccion>();
-//		atraccionesPackPaisajes.add(new Atraccion("Minas Tirith", 5, 2.5, 25, "Paisaje"));
-//		atraccionesPackPaisajes.add(new Atraccion("Abismo de Helm", 5, 2.0, 15, "Paisaje"));
-//		atraccionesPackPaisajesGratis.add(new Atraccion("Erebor", 12, 3.0, 32, "Paisaje"));
-//
-//		Promocion packPaisaje = new Combo("Pack paisaje", atraccionesPackPaisajes, "Combo",
-//				atraccionesPackPaisajesGratis);
-//
-//		promociones.add(packPaisaje);
-//
-//		return promociones;
-		 
-		
-		
-		String Archivo = rutaArchivo;
-		List<Promocion> promociones = new ArrayList<Promocion>();
-		List<Atraccion> atracciones = new ArrayList<Atraccion>();
+	public static List<Promocion> getPromocionesArchivoRuta(String rutaArchivo, List<Atraccion> atraccionesPrincipales) {
 
-		// Declarar una variable BufferedReader
-		BufferedReader buffeReader = null;
+		List<Promocion> promociones = null;
+		List<Atraccion> atracciones = null;
+		String lineaPromocion = "^1\\,[\\u0020-\\u007e\\u00a0-\\u00ff]+\\,(Porcentual|Absoluta|Combo)\\,(\\d+$|\\d+\\.\\d+$)";
+		String lineaAtraccion = "^2\\,[\\u0020-\\u007e\\u00a0-\\u00ff]+$";
+		String texto = null;
+		String[] nuevaPromo = null;
+		String[] nuevaAtraccion = null;
+		
+
+		Scanner scanner = null;
 		try {
-			// Crear un objeto BufferedReader al que se le pasa
-			// un objeto FileReader con el nombre del fichero
-			buffeReader = new BufferedReader(new FileReader(Archivo));
-			// Leer la primera l�nea, guardando en un String
-			String texto = buffeReader.readLine();
-			// Repetir mientras no se llegue al final del fichero
-			String[] splitTextHdr = texto.split(",");
-			String[] splitTextHdrNew = null;
-			while (texto != null) {
-				// Separamos los datos
-				// Cargamos la lista de usuarios
-				String[] splitText = texto.split(",");
-				if (!splitText[0].equals("1") && !splitTextHdrNew[1].equals(splitTextHdr[1])) {
 
-					if (splitTextHdr[2].equals("Porcentual")) {
-						promociones.add(new Porcentual(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
-								"Porcentual", Integer.parseInt(splitTextHdr[3])));
-					} else {
-						if (splitTextHdr[2].equals("Absoluta")) {
-							promociones.add(new Absoluta(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
-									"Absoluta", Integer.parseInt(splitTextHdr[3])));
-						}
-						else {
-							if (splitTextHdr[2].equals("Combo")) {
-								promociones.add(new Combo(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
-										"Combo"));
-							}
-						}
-					}
-
-					splitTextHdr = splitTextHdrNew;
-					atracciones.clear();
-
-				}
-				if (splitText[0].equals("1")) {
-					splitTextHdrNew = texto.split(",");
-
-				} else {
-					atracciones.add(new Atraccion(splitText[1], Integer.parseInt(splitText[2]),
-							Double.parseDouble(splitText[3]), Integer.parseInt(splitText[4]), splitText[5]));
-				}
-
-				// Leer la siguiente l�nea
-				texto = buffeReader.readLine();
-			}
-			if (!atracciones.isEmpty()) {
-				if (splitTextHdr[2].equals("Porcentual")) {
-					promociones.add(new Porcentual(splitTextHdr[1], new ArrayList<Atraccion>(atracciones), "Porcentual",
-							Integer.parseInt(splitTextHdr[3])));
-				} else {
-					if (splitTextHdr[2].equals("Absoluta")) {
-						promociones.add(new Absoluta(splitTextHdr[1], new ArrayList<Atraccion>(atracciones), "Absoluta",
-								Integer.parseInt(splitTextHdr[3])));
-					}
-					else {
-						if (splitTextHdr[2].equals("Combo")) {
-							promociones.add(new Combo(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
-									"Combo"));
-						}
-					}
-				}
-			}
-
-		}
-		// Captura de excepci�n por fichero no encontrado
-		catch (FileNotFoundException ex) {
-			System.out.println("Error: Fichero no encontrado");
-			ex.printStackTrace();
-		}
-		// Captura de cualquier otra excepci�n
-		catch (Exception ex) {
-			System.out.println("Error de lectura del fichero");
-			ex.printStackTrace();
-		}
-		// Asegurar el cierre del fichero en cualquier caso
-		finally {
-
-			try {
-				// Cerrar el fichero si se ha podido abrir
-				if (buffeReader != null) {
-					buffeReader.close();
-				}
-			} catch (Exception ex) {
-				System.out.println("Error al cerrar el fichero");
-				ex.printStackTrace();
-			}
-		}
-		return promociones;
-	}
-	
-	public static List<Promocion> getPromocionesAchivo() {
-
-		String Archivo = RUTA_PROMOS;
-		List<Promocion> promociones = new ArrayList<Promocion>();
-		List<Atraccion> atracciones = new ArrayList<Atraccion>();
-
-		// Declarar una variable BufferedReader
-		BufferedReader buffeReader = null;
-		try {
-			// Crear un objeto BufferedReader al que se le pasa
-			// un objeto FileReader con el nombre del fichero
-			buffeReader = new BufferedReader(new FileReader(Archivo));
-			// Leer la primera l�nea, guardando en un String
-			String texto = buffeReader.readLine();
-			// Repetir mientras no se llegue al final del fichero
-			String[] splitTextHdr = texto.split(",");
-			String[] splitTextHdrNew = null;
-			while (texto != null) {
+			scanner = new Scanner(new FileInputStream(rutaArchivo));
+			
+			
+			texto = scanner.nextLine();
+			while (texto.matches(lineaPromocion) || texto.isEmpty() ) {
 				
-				if (texto.isEmpty()) {
-					texto = buffeReader.readLine();
+				if (texto.isEmpty() ) {
+					texto = scanner.nextLine();
 					continue;
 				}
-				
-				// Separamos los datos
-				// Cargamos la lista de usuarios
-				String[] splitText = texto.split(",");
-				if (
-						!splitText[0].equals("1") 
-						&& !splitTextHdrNew[1].equals(splitTextHdr[1])	) {
-
-					if (splitTextHdr[2].equals("Porcentual")) {
-						promociones.add(new Porcentual(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
-								"Porcentual", Integer.parseInt(splitTextHdr[3])));
-					} else {
-						if (splitTextHdr[2].equals("Absoluta")) {
-							promociones.add(new Absoluta(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
-									"Absoluta", Integer.parseInt(splitTextHdr[3])));
-						} else {
-							if (splitTextHdr[2].equals("Combo")) {
-								promociones.add(
-										new Combo(splitTextHdr[1], new ArrayList<Atraccion>(atracciones), "Combo"));
+				if (texto.matches(lineaPromocion) ) {
+					nuevaPromo = texto.split(",");
+					
+					promociones = new ArrayList<Promocion>();
+					atracciones = new ArrayList<Atraccion>();
+					
+					texto = scanner.nextLine();
+					while (texto.matches(lineaAtraccion) || texto.isEmpty() ) {
+						if (texto.isEmpty() ) {
+							texto = scanner.nextLine();
+							continue;
+						}
+						if (texto.matches(lineaAtraccion) ) {
+							nuevaAtraccion = texto.split(",");
+							for (Atraccion atraccion : atraccionesPrincipales) {
+								if ( atraccion.getNombre().equals(nuevaAtraccion[1]) ) {
+									atracciones.add(atraccion);
+									texto = scanner.nextLine();
+									break;
+								}
 							}
 						}
 					}
-
-					splitTextHdr = splitTextHdrNew;
-					atracciones.clear();
-
 				}
-				if (splitText[0].equals("1")) {
-					splitTextHdrNew = texto.split(",");
-
-				} else {
-					atracciones.add(new Atraccion(splitText[1], Integer.parseInt(splitText[2]),	Double.parseDouble(splitText[3]), Integer.parseInt(splitText[4]), splitText[5]));
+				
+				if (!atracciones.isEmpty() ) {
+				
+					switch (nuevaPromo[2]) {
+					case "Porcentual":
+						promociones.add(new Porcentual(nuevaPromo[1], atracciones, nuevaPromo[2], Integer.parseInt(nuevaPromo[3])));
+						break;
+					case "Absoluta":
+						promociones.add(new Absoluta(nuevaPromo[1], atracciones, nuevaPromo[2], Integer.parseInt(nuevaPromo[3])));
+						break;
+					case "Combo":
+						promociones.add(new Combo(nuevaPromo[1], atracciones, nuevaPromo[2] ));
+						break;
+					}	
 				}
-
-				// Leer la siguiente l�nea
-				texto = buffeReader.readLine();
+			
 			}
-			if (!atracciones.isEmpty()) {
-				if (splitTextHdr[2].equals("Porcentual")) {
-					promociones.add(new Porcentual(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
-							"Porcentual", Integer.parseInt(splitTextHdr[3])));
-				} else {
-					if (splitTextHdr[2].equals("Absoluta")) {
-						promociones.add(new Absoluta(splitTextHdr[1], new ArrayList<Atraccion>(atracciones),
-								"Absoluta", Integer.parseInt(splitTextHdr[3])));
-					} else {
-						if (splitTextHdr[2].equals("Combo")) {
-							promociones.add(
-									new Combo(splitTextHdr[1], new ArrayList<Atraccion>(atracciones), "Combo"));
-						}
-					}
-				}
-			}
-
 		}
 		// Captura de excepci�n por fichero no encontrado
 		catch (FileNotFoundException ex) {
 		    System.out.println("Error: Fichero no encontrado");
 		    ex.printStackTrace();
 		}
-		// Captura de cualquier otra excepci�n
-		catch(Exception ex) {
-		    System.out.println("Error de lectura del fichero");
-		    ex.printStackTrace();
+		// Se acabo el archivo queda procesar el ultimo
+		catch(NoSuchElementException ex) {
+			if (!atracciones.isEmpty() ) {
+				
+				switch (nuevaPromo[2]) {
+				case "Porcentual":
+					promociones.add(new Porcentual(nuevaPromo[1], atracciones, nuevaPromo[2], Integer.parseInt(nuevaPromo[3])));
+					break;
+				case "Absoluta":
+					promociones.add(new Absoluta(nuevaPromo[1], atracciones, nuevaPromo[2], Integer.parseInt(nuevaPromo[3])));
+					break;
+				case "Combo":
+					promociones.add(new Combo(nuevaPromo[1], atracciones, nuevaPromo[2] ));
+					break;
+				}	
+			}
+			
 		}
 		// Asegurar el cierre del fichero en cualquier caso
 		finally {
 
 		    try{
 		        // Cerrar el fichero si se ha podido abrir
-		        if(buffeReader != null) {
-		            buffeReader.close();
+		        if(scanner != null) {
+		            scanner.close();
 		        }
 		    }
 		    catch (Exception ex) {
@@ -318,6 +190,113 @@ public class Logica {
 		    }
 		}
 		return promociones;		
+	}
+	
+	public static List<Promocion> getPromocionesAchivo(List<Atraccion> atraccionesPrincipales) {
+
+		String archivo = RUTA_PROMOS;
+		List<Promocion> promociones = new ArrayList<Promocion>();
+		List<Atraccion> atracciones = null;
+		String lineaPromocion = "^1\\,[\\u0020-\\u007e\\u00a0-\\u00ff]+\\,(Porcentual|Absoluta|Combo)\\,(\\d+$|\\d+\\.\\d+$)";
+		String lineaAtraccion = "^2\\,[\\u0020-\\u007e\\u00a0-\\u00ff]+$";
+		String texto = null;
+		String[] nuevaPromo = null;
+		String[] nuevaAtraccion = null;
+		
+
+		// Declarar una variable Scanner
+		Scanner scanner = null;
+		try {
+
+			scanner = new Scanner(new FileInputStream(archivo));
+			
+			
+			texto = scanner.nextLine();
+			while (texto.matches(lineaPromocion) || texto.isEmpty() ) {
+				
+				if (texto.isEmpty() ) {
+					texto = scanner.nextLine();
+					continue;
+				}
+				if (texto.matches(lineaPromocion) ) {
+					nuevaPromo = texto.split(",");
+					
+					atracciones = new ArrayList<Atraccion>();
+					
+					texto = scanner.nextLine();
+					while (texto.matches(lineaAtraccion) || texto.isEmpty() ) {
+						if (texto.isEmpty() ) {
+							texto = scanner.nextLine();
+							continue;
+						}
+						if (texto.matches(lineaAtraccion) ) {
+							nuevaAtraccion = texto.split(",");
+							for (Atraccion atraccion : atraccionesPrincipales) {
+								if ( atraccion.getNombre().equals(nuevaAtraccion[1]) ) {
+									atracciones.add(atraccion);
+									texto = scanner.nextLine();
+									break;
+								}
+							}
+						}
+					}
+				}
+				
+				if (!atracciones.isEmpty() ) {
+				
+					switch (nuevaPromo[2]) {
+					case "Porcentual":
+						promociones.add(new Porcentual(nuevaPromo[1], atracciones, nuevaPromo[2], Integer.parseInt(nuevaPromo[3])));
+						break;
+					case "Absoluta":
+						promociones.add(new Absoluta(nuevaPromo[1], atracciones, nuevaPromo[2], Integer.parseInt(nuevaPromo[3])));
+						break;
+					case "Combo":
+						promociones.add(new Combo(nuevaPromo[1], atracciones, nuevaPromo[2] ));
+						break;
+					}	
+				}
+			
+			}
+		}
+		// Captura de excepci�n por fichero no encontrado
+		catch (FileNotFoundException ex) {
+		    System.out.println("Error: Fichero no encontrado");
+		    ex.printStackTrace();
+		}
+		// Se acabo el archivo queda procesar el ultimo
+		catch(NoSuchElementException ex) {
+			if (!atracciones.isEmpty() ) {
+				
+				switch (nuevaPromo[2]) {
+				case "Porcentual":
+					promociones.add(new Porcentual(nuevaPromo[1], atracciones, nuevaPromo[2], Integer.parseInt(nuevaPromo[3])));
+					break;
+				case "Absoluta":
+					promociones.add(new Absoluta(nuevaPromo[1], atracciones, nuevaPromo[2], Integer.parseInt(nuevaPromo[3])));
+					break;
+				case "Combo":
+					promociones.add(new Combo(nuevaPromo[1], atracciones, nuevaPromo[2] ));
+					break;
+				}	
+			}
+			
+		}
+		// Asegurar el cierre del fichero en cualquier caso
+		finally {
+
+		    try{
+		        // Cerrar el fichero si se ha podido abrir
+		        if(scanner != null) {
+		            scanner.close();
+		        }
+		    }
+		    catch (Exception ex) {
+		        System.out.println("Error al cerrar el fichero");
+		        ex.printStackTrace();
+		    }
+		}
+		return promociones;			
 	}
 
 	public static List<Atraccion> getAtraccionesAchivo() {

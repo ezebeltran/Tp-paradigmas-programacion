@@ -12,13 +12,21 @@ import unlam.paradigmas.tp.logica.Logica;
 import unlam.paradigmas.tp.utils.LectorDePromocion;
 
 public class PromocionTests {
-	private List<Atraccion> atracciones;
+	private List<Atraccion> atraccionesEjemplo;
 
-//	@Before
-//	public void setUp() {
-//		
-//		atracciones = Logica.getAtraccionesAchivo();
-//	}
+	@Before
+	public void setUp() {
+		
+		atraccionesEjemplo = new ArrayList<Atraccion>();
+		atraccionesEjemplo.add(new Atraccion("Moria"			,10	,2.0,6	,"Aventura"));
+		atraccionesEjemplo.add(new Atraccion("Minas Tirith"		,5	,2.5,25	,"Paisaje"));
+		atraccionesEjemplo.add(new Atraccion("La Comarca"		,3	,6.5,150,"Degustación"));
+		atraccionesEjemplo.add(new Atraccion("Mordor"			,25	,3.0,4	,"Aventura"));
+		atraccionesEjemplo.add(new Atraccion("Abismo de Helm"	,5	,2.0,15	,"Paisaje"));
+		atraccionesEjemplo.add(new Atraccion("Lothlórien"		,35	,1.0,30	,"Degustación"));
+		atraccionesEjemplo.add(new Atraccion("Erebor"			,12	,3.0,32	,"Paisaje"));
+		atraccionesEjemplo.add(new Atraccion("Bosque Negro"		,3	,4.0,12	,"Aventura"));
+	}
 
 	
 //	@Test
@@ -71,11 +79,10 @@ public class PromocionTests {
 		ArrayList<Atraccion> atraccionesPromo = new ArrayList<Atraccion>();
 		atraccionesPromo.add(new Atraccion("Moria", 10, 2.0, 6, "Aventura"));
 		atraccionesPromo.add(new Atraccion("Mordor", 25, 3.0, 4, "Aventura"));
-		atraccionesPromo.add(new Atraccion("Edoras", 30, 3.5, 5, "Aventura"));
 		Porcentual promoAventuraPorcentual = new Porcentual("PACK Aventura", atraccionesPromo, "Porcentual", 10);
 		promocionEsperada.add(promoAventuraPorcentual);
 				
-		List<Promocion> promocionObtenida = Logica.getPromocionesArchivoRuta("entrada/promocionPorcentual.txt");
+		List<Promocion> promocionObtenida = Logica.getPromocionesArchivoRuta("entrada/promocionPorcentual.txt",atraccionesEjemplo);
 		
 		if (promocionEsperada.equals(promocionObtenida))
 			fallo=false;
@@ -89,13 +96,13 @@ public class PromocionTests {
 		ArrayList<Promocion> promocionEsperada = new ArrayList<Promocion>();
 		
 		ArrayList<Atraccion> atraccionesPromo = new ArrayList<Atraccion>();
-		atraccionesPromo.add(new Atraccion("Los Argonah"	,25	,4.0,20,"Paisaje"));
-		atraccionesPromo.add(new Atraccion("Rio de Rohan",20,1.5,10,"Aventura"));
-		atraccionesPromo.add(new Atraccion("Gollums pool",12,4.0,15,"Aventura"));
+		atraccionesPromo.add(new Atraccion("Minas Tirith"		,5	,2.5,25	,"Paisaje"));
+		atraccionesPromo.add(new Atraccion("Abismo de Helm"		,5	,2.0,15	,"Paisaje"));
+		atraccionesPromo.add(new Atraccion("Bosque Negro"		,3	,4.0,12	,"Aventura"));
 		Absoluta promoAventuraAbsoluta = new Absoluta("PACK River",atraccionesPromo, "Absoluta",30);
 		promocionEsperada.add(promoAventuraAbsoluta);
 				
-		List<Promocion> promocionObtenida = Logica.getPromocionesArchivoRuta("entrada/promocionAbsoluta.txt");
+		List<Promocion> promocionObtenida = Logica.getPromocionesArchivoRuta("entrada/promocionAbsoluta.txt",atraccionesEjemplo);
 		
 		if (promocionEsperada.equals(promocionObtenida))
 			fallo=false;
@@ -109,13 +116,13 @@ public class PromocionTests {
 		ArrayList<Promocion> promocionEsperada = new ArrayList<Promocion>();
 		
 		ArrayList<Atraccion> atraccionesPromo = new ArrayList<Atraccion>();
-		atraccionesPromo.add(new Atraccion("Minas Tirith"	,5	,2.5,25	,"Paisaje"));
-		atraccionesPromo.add(new Atraccion("Abismo de Helm"	,5	,2.0,15	,"Paisaje"));
+		atraccionesPromo.add(new Atraccion("Lothlórien"		,35	,1.0,30	,"Degustación"));
 		atraccionesPromo.add(new Atraccion("Erebor"			,12	,3.0,32	,"Paisaje"));
+		atraccionesPromo.add(new Atraccion("La Comarca"		,3	,6.5,150,"Degustación"));
 		Combo promoAventuraCombo = new Combo("PACK AXB",atraccionesPromo, "Combo");
 		promocionEsperada.add(promoAventuraCombo);
 				
-		List<Promocion> promocionObtenida = Logica.getPromocionesArchivoRuta("entrada/promocionCombo.txt");
+		List<Promocion> promocionObtenida = Logica.getPromocionesArchivoRuta("entrada/promocionCombo.txt",atraccionesEjemplo);
 		
 		
 		if (promocionEsperada.equals(promocionObtenida))
