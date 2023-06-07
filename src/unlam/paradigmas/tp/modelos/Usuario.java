@@ -8,18 +8,16 @@ public class Usuario {
 	//Itinerario?
 	
 	//Constructor
-	public Usuario(String nombre, float presupuesto, float tiempoDisponible, String tipoPreferido) {
+	public Usuario(String nombre, double presupuesto, double tiempoDisponible, String tipoPreferido) {
 		this.nombre = nombre;
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.tipoPreferido = tipoPreferido;
 	}
 	
-	
 	public String getNombre() {
 		return nombre;
 	}
-
 
 	public double getPresupuesto() {
 		return this.presupuesto;
@@ -33,7 +31,7 @@ public class Usuario {
 		return this.tipoPreferido;
 	}
 	
-	public void reducirPresupuesto(float valor) {
+	public void reducirPresupuesto(double valor) {
 		if(valor > this.presupuesto) {
 			throw new Error("El precio es mayor al presupuesto.");
 		} else {

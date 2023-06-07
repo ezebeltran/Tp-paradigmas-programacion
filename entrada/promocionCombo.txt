@@ -1,1 +1,4 @@
-Paisaje,Combo,Minas Tirith,Abismo de Helm,Erebor,0
+1,PACK AXB,Combo,0
+2,Lothlórien
+2,Erebor
+2,La Comarca

@@ -18,7 +18,7 @@ public class Porcentual extends Promocion {
 	@Override
 	public String toString() {
 		return 
-				"Promocion "+ this.getNombre() + ". Descuento porcentual\n" 
+				"Promocion "+ this.getNombre() + ". Descuento porcentual de "+ this.descuento +"%\n" 
 				+ super.toString();
 	}
 

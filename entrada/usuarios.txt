@@ -1,8 +1,8 @@
 Frodo,100,12,Aventura
+Aragorn,79,12,Aventura
 Galardiel,100,5,Paisaje
 Sam,36,8,Degustacion
 Gollum,60,10,Degustacion
-Aragorn,79,12,Aventura
 Gandalf,45,6,Paisaje
 Sauron,80,8,Paisaje
 Legolas,100,7,Degustacion

@@ -1,54 +1,23 @@
 package unlam.paradigmas.tp.main;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
-
-import com.sun.source.tree.WhileLoopTree;
 
 import unlam.paradigmas.tp.logica.Logica;
 import unlam.paradigmas.tp.modelos.Atraccion;
 import unlam.paradigmas.tp.modelos.Itinerario;
 import unlam.paradigmas.tp.modelos.Promocion;
 import unlam.paradigmas.tp.modelos.Usuario;
-import unlam.paradigmas.tp.utils.LectorDePromocion;
 
 public class Main {
 	final static String RUTA_PROMOCIONES = "entrada/promociones.txt";
 
-	private static Set<Atraccion> atraccionesDisponibles() {
-		// Necesario para cargar las promociones
-		LinkedHashSet<Atraccion> atracciones = new LinkedHashSet<Atraccion>();
-		atracciones.add(new Atraccion("Moria", 10, 2.0, 6, "Aventura"));
-		atracciones.add(new Atraccion("Minas Tirith", 5, 2.5, 25, "Paisaje"));
-		atracciones.add(new Atraccion("La Comarca", 3, 6.5, 150, "Degustaci√≥n"));
-		atracciones.add(new Atraccion("Mordor", 25, 3.0, 4, "Aventura"));
-		atracciones.add(new Atraccion("Abismo de Helm", 5, 2.0, 15, "Paisaje"));
-		atracciones.add(new Atraccion("Lothl√≥rien", 35, 1.0, 30, "Degustaci√≥n"));
-		atracciones.add(new Atraccion("Erebor", 12, 3.0, 32, "Paisaje"));
-		atracciones.add(new Atraccion("Bosque Negro", 3, 4.0, 12, "Aventura"));
-		return atracciones;
-	}
 
 	public static void main(String[] args) {
 
-		// Leo el archivo y lo muestro por consola
-
-		/*
-		 * ArrayList<Promocion> promociones = null;
-		 * 
-		 * try { LectorDePromocion archivoPromocion = new
-		 * LectorDePromocion(RUTA_PROMOCIONES); promociones =
-		 * archivoPromocion.leerPromociones(atraccionesDisponibles()); } catch
-		 * (Exception e) { e.printStackTrace(); }
-		 * 
-		 * for (Promocion i : promociones) { System.out.println( i ); }
-		 */
 
 		System.out.println("\n\t Bienvenido/a a Tierra Media");
 		System.out.println("----------------------------------------------------------------------------------\n");
@@ -58,8 +27,9 @@ public class Main {
 
 		/** leer datos de entrada **/
 		List<Usuario> usuarios = Logica.getUsuariosAchivo();
-		List<Promocion> promociones = Logica.getPromocionesAchivo();
 		List<Atraccion> atracciones = Logica.getAtraccionesAchivo();
+		List<Promocion> promociones = Logica.getPromocionesAchivo(atracciones);
+		
 
 		/** Ordenar lista promociones y atracciones **/
 
@@ -88,9 +58,12 @@ public class Main {
 			while (itPromoPref.hasNext()) {
 				Promocion promocion = (Promocion) itPromoPref.next();
 
-				if (usuario.getPresupuesto() >= promocion.getPrecioPromocion()
+				if (
+						usuario.getPresupuesto() >= promocion.getPrecioPromocion()
 						&& usuario.getTiempo() >= promocion.getTiempoTotal() 
-						&& promocion.algunaAtraccionTipo(usuario.getTipoPreferido())) {
+						&& promocion.tieneCupo()
+						&& noRepitePromocion(promocion,promosAceptadas)
+						&& promocion.algunaAtraccionTipo(usuario.getTipoPreferido())	) {
 					/** Sugerir promo **/
 //					System.out.println(promocion.toString());
 //					System.out.println("Acepta sugerencia? Ingrese S o N");
@@ -99,17 +72,20 @@ public class Main {
 					//if (respuesta.equals("S") || respuesta.equals("s")) {
 					if (promocion.sugerir(scanner)) {
 						promosAceptadas.add(promocion);
+						agregarAtraccionesDePromo(promocion, atraccionesAceptadas);
 						
 						usuario.reducirPresupuesto(promocion.getPrecioPromocion());
 						usuario.reducirTiempo(promocion.getTiempoTotal());
 						itinerario.sumarPrecio(promocion.getPrecioPromocion());
 						itinerario.sumarTiempo(promocion.getTiempoTotal());
 						
-						//System.out.println("°Aceptada!");
+						//System.out.println("ÔøΩAceptada!");
 						
+						reducirCuposDePromocion(promocion);
+
 						/** como verifico el cupo de la promocion **/
-						if (promocion.hayAtraccionSinCupo())
-							itPromoPref.remove();
+						/*if (promocion.hayAtraccionSinCupo())
+							itPromoPref.remove();*/
 					}
 					
 					System.out.println("----------------------------------------------------------------------------------\n");
@@ -125,7 +101,12 @@ public class Main {
 			while (itAtraccionesPref.hasNext()) {
 				Atraccion atraccion = (Atraccion) itAtraccionesPref.next();
 
-				if (usuario.getPresupuesto() >= atraccion.getPrecio() && usuario.getTiempo() >= atraccion.getTiempo() && atraccion.getTipo().equals(usuario.getTipoPreferido())) {
+				if (
+						usuario.getPresupuesto() >= atraccion.getPrecio() 
+						&& usuario.getTiempo() >= atraccion.getTiempo() 
+						&& atraccion.tieneCupo()
+						&& norepiteAtraccion(atraccion,atraccionesAceptadas)
+						&& atraccion.getTipo().equals(usuario.getTipoPreferido())	) {
 
 //					System.out.println(atraccion.toString());
 //					System.out.println("Acepta sugerencia? Ingrese S o N");
@@ -141,10 +122,11 @@ public class Main {
 						itinerario.sumarPrecio(atraccion.getPrecio());
 						itinerario.sumarTiempo(atraccion.getTiempo());
 						
-						//System.out.println("°Aceptada!");
+						//System.out.println("ÔøΩAceptada!");
+						atraccion.reducirCupo();
 						
-						if (atraccion.getCupo() == 0)
-							itAtraccionesPref.remove();
+						/*if (atraccion.getCupo() == 0)
+							itAtraccionesPref.remove();*/
 					}
 
 					System.out.println("----------------------------------------------------------------------------------\n");
@@ -153,15 +135,19 @@ public class Main {
 				
 			}
 			
-			/**Iterar lista promociones preferidas**/
+			/**Iterar lista promociones restantes**/
 
 			Iterator<Promocion> itPromoRestantes = promociones.iterator();
 
 			while (itPromoRestantes.hasNext()) {
 				Promocion promocion = (Promocion) itPromoRestantes.next();
 
-				if (usuario.getPresupuesto() >= promocion.getPrecioPromocion()
-						&& usuario.getTiempo() >= promocion.getTiempoTotal() && !promocion.algunaAtraccionTipo(usuario.getTipoPreferido()) ) {
+				if (
+						usuario.getPresupuesto() >= promocion.getPrecioPromocion()
+						&& usuario.getTiempo() >= promocion.getTiempoTotal() 
+						&& promocion.tieneCupo()
+						&& noRepitePromocion(promocion,promosAceptadas)
+						&& !promocion.algunaAtraccionTipo(usuario.getTipoPreferido()) ) {
 					/** Sugerir promo **/
 //					System.out.println(promocion.toString());
 //					System.out.println("Acepta sugerencia? Ingrese S o N");
@@ -170,6 +156,7 @@ public class Main {
 //					if (respuesta.equals("S") || respuesta.equals("s")) {
 					if (promocion.sugerir(scanner)) {
 						promosAceptadas.add(promocion);
+						agregarAtraccionesDePromo(promocion, atraccionesAceptadas);
 						
 						usuario.reducirPresupuesto(promocion.getPrecioPromocion());
 						usuario.reducirTiempo(promocion.getTiempoTotal());
@@ -177,11 +164,12 @@ public class Main {
 						itinerario.sumarPrecio(promocion.getPrecioPromocion());
 						itinerario.sumarTiempo(promocion.getTiempoTotal());
 						
-						//System.out.println("°Aceptada!");
-						/** como verifico el cupo de la promocion **/
+						//System.out.println("ÔøΩAceptada!");
 
-						if (promocion.hayAtraccionSinCupo())
-							itPromoRestantes.remove();
+						reducirCuposDePromocion(promocion);
+						
+						/*if (promocion.hayAtraccionSinCupo())
+							itPromoRestantes.remove();*/
 					}
 					
 					System.out.println("----------------------------------------------------------------------------------\n");
@@ -197,7 +185,13 @@ public class Main {
 			while (itAtraccionesRestantes.hasNext()) {
 				Atraccion atraccion = (Atraccion) itAtraccionesRestantes.next();
 
-				if (usuario.getPresupuesto() >= atraccion.getPrecio() && usuario.getTiempo() >= atraccion.getTiempo() && !usuario.getTipoPreferido().equals(atraccion.getTipo())) {
+				if (
+						usuario.getPresupuesto() >= atraccion.getPrecio() 
+						&& usuario.getTiempo() >= atraccion.getTiempo() 
+						&& atraccion.tieneCupo()
+						&& norepiteAtraccion(atraccion,atraccionesAceptadas)
+						&& !usuario.getTipoPreferido().equals(atraccion.getTipo())	) {
+					
 //					System.out.println(atraccion.toString());
 //					System.out.println("Acepta sugerencia? Ingrese S o N");
 //					String respuesta = scanner.nextLine();
@@ -212,10 +206,11 @@ public class Main {
 						itinerario.sumarPrecio(atraccion.getPrecio());
 						itinerario.sumarTiempo(atraccion.getTiempo());
 						
-						//System.out.println("°Aceptada!");
+						//System.out.println("ÔøΩAceptada!");
+						atraccion.reducirCupo();
 						
-						if (atraccion.getCupo() == 0)
-							itAtraccionesRestantes.remove();
+						/*if (atraccion.getCupo() == 0)
+							itAtraccionesRestantes.remove();*/
 					}
 					
 					System.out.println("----------------------------------------------------------------------------------\n");
@@ -243,6 +238,31 @@ public class Main {
 			System.out.println(itinerario2.toString());
 			System.out.println("----------------------------------------------------------------------------------\n");
 		}*/
+	}
+	
+
+	private static void agregarAtraccionesDePromo(Promocion promocionAgregada, List<Atraccion> atraccionesAceptadas) {
+		for (Atraccion atraccion : promocionAgregada.getAtracciones() )
+			atraccionesAceptadas.add(atraccion);
+	}
+	
+	private static void reducirCuposDePromocion(Promocion promocionAceptada ) {
+		for (Atraccion atraccionAceptada : promocionAceptada.getAtracciones() )
+			atraccionAceptada.reducirCupo();
+	}
+
+	private static boolean norepiteAtraccion(Atraccion atraccionPedida, List<Atraccion> atraccionesAceptadas) {
+		for (Atraccion atraccionAceptada : atraccionesAceptadas )
+			if (atraccionAceptada.getNombre().equals(atraccionPedida.getNombre()) )
+				return false;
+		return true;
+	}
+
+	private static boolean noRepitePromocion(Promocion promocionPedida, List<Promocion> promosAceptadas) {
+		for (Promocion promocionAceptada : promosAceptadas )
+			if (promocionAceptada.getNombre().equals(promocionPedida.getNombre()) )
+				return false;
+		return true;
 	}
 
 }

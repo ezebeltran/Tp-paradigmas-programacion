@@ -1,5 +1,6 @@
 package unlam.paradigmas.tp.modelos;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -49,6 +50,19 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 		return precioPromocion;
 	}
 	
+	public List<Atraccion> getAtracciones() {
+		return atracciones;
+	}
+
+	public boolean tieneCupo() {
+		for (Atraccion atraccion : atracciones) {
+			if ( !atraccion.tieneCupo() ) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	/**tener en cuenta el combo**/
 	public boolean hayAtraccionSinCupo() {
 		for (Atraccion atraccion : atracciones) {
@@ -75,19 +89,22 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 	
 	//public abstract void mostrarPromocion();
 
-	/*@Override
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((atracciones == null) ? 0 : atracciones.hashCode());
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		result = prime * result + precioNormal;
+		result = prime * result + precioPromocion;
 		long temp;
-		temp = Double.doubleToLongBits(descuento);
+		temp = Double.doubleToLongBits(tiempoTotal);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		return result;
-	}*/
+	}
 
-	/*@Override
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
@@ -106,7 +123,20 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 		} else if (!atracciones.equals(other.atracciones)) {
 			return false;
 		}
-		if (Double.doubleToLongBits(descuento) != Double.doubleToLongBits(other.descuento)) {
+		if (nombre == null) {
+			if (other.nombre != null) {
+				return false;
+			}
+		} else if (!nombre.equals(other.nombre)) {
+			return false;
+		}
+		if (precioNormal != other.precioNormal) {
+			return false;
+		}
+		if (precioPromocion != other.precioPromocion) {
+			return false;
+		}
+		if (Double.doubleToLongBits(tiempoTotal) != Double.doubleToLongBits(other.tiempoTotal)) {
 			return false;
 		}
 		if (tipo == null) {
@@ -118,12 +148,12 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 		}
 		return true;
 	}
-	*/
+	
 
 	private String listAtraccionesAString() {
 		String res="";
 		for (Atraccion atraccion : atracciones) {
-			res=res+atraccion.getNombre()+", ";
+			res=res+atraccion.getNombre()+"("+atraccion.getTipo()+"), ";
 		}
 		
 		return res.substring(0, res.length()-2);
@@ -160,10 +190,11 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 		String respuesta = scanner.nextLine();
 		
 		if (respuesta.equals("S") || respuesta.equals("s")) {
-			System.out.println("¡Aceptada!");
+			System.out.println("ï¿½Aceptada!");
 			return true;
 		}
 		return false;
 
 	}
+
 }

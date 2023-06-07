@@ -1,1 +1,3 @@
-Aventura,Porcentual,Bosque Negro,Mordor,20
+1,PACK Aventura,Porcentual,10
+2,Moria
+2,Mordor
