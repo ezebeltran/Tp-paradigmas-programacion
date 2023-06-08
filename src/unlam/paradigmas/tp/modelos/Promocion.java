@@ -63,6 +63,14 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 		return true;
 	}
 	
+	public boolean tieneAtraccion(String nombreAtracion) {
+		for (Atraccion atraccion : atracciones) {
+			if(atraccion.getNombre().equals(nombreAtracion))
+				return true;
+		}
+		return false;
+	}
+	
 	/**tener en cuenta el combo**/
 	public boolean hayAtraccionSinCupo() {
 		for (Atraccion atraccion : atracciones) {
@@ -85,6 +93,11 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 		
 		return false;
 		
+	}
+	
+	public void reducirCupo() {
+		for (Atraccion atraccion : atracciones )
+			atraccion.reducirCupo();
 	}
 	
 	//public abstract void mostrarPromocion();
@@ -186,11 +199,16 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 	@Override
 	public boolean sugerir(Scanner scanner) {
 		System.out.println(this.toString());
-		System.out.println("Acepta sugerencia? Ingrese S o N");
-		String respuesta = scanner.nextLine();
+		
+		String respuesta="";
+		do {
+			System.out.println("Acepta sugerencia? Ingrese S o N");
+			 respuesta = scanner.nextLine();
+		}while(!respuesta.equals("S") && !respuesta.equals("s") && !respuesta.equals("N") && !respuesta.equals("n"));
+		
 		
 		if (respuesta.equals("S") || respuesta.equals("s")) {
-			System.out.println("�Aceptada!");
+			System.out.println("¡Aceptada!");
 			return true;
 		}
 		return false;

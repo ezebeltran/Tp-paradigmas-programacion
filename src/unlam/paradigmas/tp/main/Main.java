@@ -62,7 +62,7 @@ public class Main {
 						usuario.getPresupuesto() >= promocion.getPrecioPromocion()
 						&& usuario.getTiempo() >= promocion.getTiempoTotal() 
 						&& promocion.tieneCupo()
-						&& noRepitePromocion(promocion,promosAceptadas)
+						&& noRepitePromocion(promocion,promosAceptadas)// se pueden repetir las promociones ??
 						&& promocion.algunaAtraccionTipo(usuario.getTipoPreferido())	) {
 					/** Sugerir promo **/
 //					System.out.println(promocion.toString());
@@ -72,16 +72,17 @@ public class Main {
 					//if (respuesta.equals("S") || respuesta.equals("s")) {
 					if (promocion.sugerir(scanner)) {
 						promosAceptadas.add(promocion);
-						agregarAtraccionesDePromo(promocion, atraccionesAceptadas);
+						//agregarAtraccionesDePromo(promocion, atraccionesAceptadas);
 						
 						usuario.reducirPresupuesto(promocion.getPrecioPromocion());
 						usuario.reducirTiempo(promocion.getTiempoTotal());
 						itinerario.sumarPrecio(promocion.getPrecioPromocion());
 						itinerario.sumarTiempo(promocion.getTiempoTotal());
 						
-						//System.out.println("�Aceptada!");
+						//System.out.println("ï¿½Aceptada!");
 						
-						reducirCuposDePromocion(promocion);
+						//reducirCuposDePromocion(promocion);
+						promocion.reducirCupo();
 
 						/** como verifico el cupo de la promocion **/
 						/*if (promocion.hayAtraccionSinCupo())
@@ -106,6 +107,7 @@ public class Main {
 						&& usuario.getTiempo() >= atraccion.getTiempo() 
 						&& atraccion.tieneCupo()
 						&& norepiteAtraccion(atraccion,atraccionesAceptadas)
+						&& norepiteAtraccionEnPromo(atraccion, promosAceptadas)
 						&& atraccion.getTipo().equals(usuario.getTipoPreferido())	) {
 
 //					System.out.println(atraccion.toString());
@@ -122,7 +124,7 @@ public class Main {
 						itinerario.sumarPrecio(atraccion.getPrecio());
 						itinerario.sumarTiempo(atraccion.getTiempo());
 						
-						//System.out.println("�Aceptada!");
+						//System.out.println("ï¿½Aceptada!");
 						atraccion.reducirCupo();
 						
 						/*if (atraccion.getCupo() == 0)
@@ -156,7 +158,7 @@ public class Main {
 //					if (respuesta.equals("S") || respuesta.equals("s")) {
 					if (promocion.sugerir(scanner)) {
 						promosAceptadas.add(promocion);
-						agregarAtraccionesDePromo(promocion, atraccionesAceptadas);
+						//agregarAtraccionesDePromo(promocion, atraccionesAceptadas);
 						
 						usuario.reducirPresupuesto(promocion.getPrecioPromocion());
 						usuario.reducirTiempo(promocion.getTiempoTotal());
@@ -164,10 +166,10 @@ public class Main {
 						itinerario.sumarPrecio(promocion.getPrecioPromocion());
 						itinerario.sumarTiempo(promocion.getTiempoTotal());
 						
-						//System.out.println("�Aceptada!");
+						//System.out.println("ï¿½Aceptada!");
 
-						reducirCuposDePromocion(promocion);
-						
+						//reducirCuposDePromocion(promocion); // podria ser un metodo de la clase promocion???
+						promocion.reducirCupo();
 						/*if (promocion.hayAtraccionSinCupo())
 							itPromoRestantes.remove();*/
 					}
@@ -190,6 +192,7 @@ public class Main {
 						&& usuario.getTiempo() >= atraccion.getTiempo() 
 						&& atraccion.tieneCupo()
 						&& norepiteAtraccion(atraccion,atraccionesAceptadas)
+						&& norepiteAtraccionEnPromo(atraccion, promosAceptadas)
 						&& !usuario.getTipoPreferido().equals(atraccion.getTipo())	) {
 					
 //					System.out.println(atraccion.toString());
@@ -206,7 +209,7 @@ public class Main {
 						itinerario.sumarPrecio(atraccion.getPrecio());
 						itinerario.sumarTiempo(atraccion.getTiempo());
 						
-						//System.out.println("�Aceptada!");
+						//System.out.println("ï¿½Aceptada!");
 						atraccion.reducirCupo();
 						
 						/*if (atraccion.getCupo() == 0)
@@ -246,10 +249,10 @@ public class Main {
 			atraccionesAceptadas.add(atraccion);
 	}
 	
-	private static void reducirCuposDePromocion(Promocion promocionAceptada ) {
+	/*private static void reducirCuposDePromocion(Promocion promocionAceptada ) {
 		for (Atraccion atraccionAceptada : promocionAceptada.getAtracciones() )
 			atraccionAceptada.reducirCupo();
-	}
+	}*/
 
 	private static boolean norepiteAtraccion(Atraccion atraccionPedida, List<Atraccion> atraccionesAceptadas) {
 		for (Atraccion atraccionAceptada : atraccionesAceptadas )
@@ -257,11 +260,22 @@ public class Main {
 				return false;
 		return true;
 	}
+	
+	private static boolean norepiteAtraccionEnPromo(Atraccion atraccionPedida, List<Promocion> promosAceptadas) {
+		for (Promocion promo : promosAceptadas ) {
+			if(promo.tieneAtraccion(atraccionPedida.getNombre()))
+				return false;
+		}
+		return true;
+	}
 
 	private static boolean noRepitePromocion(Promocion promocionPedida, List<Promocion> promosAceptadas) {
-		for (Promocion promocionAceptada : promosAceptadas )
-			if (promocionAceptada.getNombre().equals(promocionPedida.getNombre()) )
-				return false;
+		for (Promocion promocionAceptada : promosAceptadas ) {
+			for (Atraccion atraccion : promocionAceptada.getAtracciones()) {
+				if(promocionPedida.tieneAtraccion(atraccion.getNombre()))
+					return false;
+			}
+		}
 		return true;
 	}
 

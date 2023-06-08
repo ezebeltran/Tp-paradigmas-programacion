@@ -124,11 +124,15 @@ public class Atraccion implements Comparable<Atraccion>, Sugerencia {
 	@Override
 	public boolean sugerir(Scanner scanner) {
 		System.out.println(this.toString());
-		System.out.println("Acepta sugerencia? Ingrese S o N");
-		String respuesta = scanner.nextLine();
+		String respuesta="";
+		do {
+			System.out.println("Acepta sugerencia? Ingrese S o N");
+			 respuesta = scanner.nextLine();
+		}while(!respuesta.equals("S") && !respuesta.equals("s") && !respuesta.equals("N") && !respuesta.equals("n"));
+		
 		
 		if (respuesta.equals("S") || respuesta.equals("s")) {
-			System.out.println("�Aceptada!");
+			System.out.println("!Aceptada!");
 			return true;
 		}
 		return false;
