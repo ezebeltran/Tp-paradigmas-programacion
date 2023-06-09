@@ -33,7 +33,7 @@ public class Usuario {
 	
 	public void reducirPresupuesto(double valor) {
 		if(valor > this.presupuesto) {
-			throw new Error("El precio es mayor al presupuesto.");
+			throw new RuntimeException("El precio es mayor al presupuesto.");
 		} else {
 			this.presupuesto -= valor;
 		}
@@ -41,7 +41,7 @@ public class Usuario {
 	
 	public void reducirTiempo(double tiempo) {
 		if(tiempo > this.tiempoDisponible) {
-			throw new Error("El tiempo es mayor al tiempo disponible del usuario.");
+			throw new RuntimeException("El tiempo es mayor al tiempo disponible del usuario.");
 		} else {
 			this.tiempoDisponible -= tiempo;
 		}

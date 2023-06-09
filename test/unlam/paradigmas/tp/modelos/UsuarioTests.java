@@ -124,7 +124,7 @@ public class UsuarioTests {
 	}
 	
 	@Test
-	public void obtenerReducirPresupuestoTrue() {
+	public void reducirPresupuestoTrue() {
 		// Arrange
 		boolean esperado = true;
 		double presupuestoReducido = 6.7;
@@ -140,7 +140,7 @@ public class UsuarioTests {
 	}
 	
 	@Test
-	public void obtenerReducirPresupuestoFalse() {
+	public void reducirPresupuestoFalse() {
 		// Arrange
 		boolean esperado = false;
 		double presupuestoReducido = 6.7;
@@ -156,7 +156,26 @@ public class UsuarioTests {
 	}
 	
 	@Test
-	public void obtenerReducirTiempoTrue() {
+	public void reducirPresupuestoError() {
+		// Arrange
+		boolean noReduce = false;
+		
+		double montoAReducir = 9999;
+		Usuario user = new Usuario("Frodo", 10.0, 7.5, "Aventura");
+
+		// Act
+		try {
+			user.reducirPresupuesto(montoAReducir);
+		}
+		catch(Exception e){
+			noReduce = true;
+		}
+		// Assert
+		Assert.assertTrue(noReduce);
+	}
+	
+	@Test
+	public void reducirTiempoTrue() {
 		// Arrange
 		boolean esperado = true;
 		double tiempoReducido = 4.2;
@@ -172,7 +191,7 @@ public class UsuarioTests {
 	}
 	
 	@Test
-	public void obtenerReducirTiempoFalse() {
+	public void reducirTiempoFalse() {
 		// Arrange
 		boolean esperado = false;
 		double tiempoReducido = 4.2;
@@ -185,5 +204,23 @@ public class UsuarioTests {
 		
 		// Assert
 		Assert.assertEquals(esperado, obtenido);
+	}
+	
+	@Test
+	public void reducirTiempoError() {
+		// Arrange
+		boolean noReduce = false;
+		double tiempoAReducir = 9999;
+		Usuario user = new Usuario("Frodo", 10.0, 7.5, "Aventura");
+
+		// Act
+		try {
+			user.reducirTiempo(tiempoAReducir);
+		}
+		catch(Exception e) {
+			noReduce = true;
+		}
+		// Assert
+		Assert.assertTrue(noReduce);
 	}
 }
