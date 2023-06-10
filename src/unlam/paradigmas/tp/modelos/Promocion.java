@@ -11,7 +11,6 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 	protected String nombre;
 	protected List<Atraccion> atracciones;
 	protected String tipo;
-	//protected double descuento;
 	protected double tiempoTotal;
 	protected int precioNormal;
 	protected int precioPromocion;
@@ -20,8 +19,6 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 		this.nombre=nombre;
 		this.atracciones = atracciones;
 		this.tipo = tipo;
-		//this.descuento = descuento;
-		
 		
 		for (Atraccion atraccion : atracciones) {
 			this.precioNormal += atraccion.getPrecio();
@@ -31,7 +28,6 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 		for (Atraccion atraccion : atracciones) {
 			this.tiempoTotal+= atraccion.getTiempo();
 		}
-		//this.precioConDescuento = 0;
 	}
 	
 	public String getNombre() {
@@ -189,11 +185,11 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 	
 	@Override
 	public int compareTo(Promocion otraPromo) {
-		int res=Integer.compare(this.precioNormal, otraPromo.precioNormal);
+		int res=Integer.compare(otraPromo.precioPromocion, this.precioPromocion);
 		if(res!=0) 
 			return res;
 		
-		return Double.compare(this.tiempoTotal, otraPromo.tiempoTotal);
+		return Double.compare(otraPromo.tiempoTotal, this.tiempoTotal);
 	}
 	
 	@Override

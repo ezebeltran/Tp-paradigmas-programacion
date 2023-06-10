@@ -1,0 +1,459 @@
+
+Itinerarios
+
+----------------------------------------------------------------------------------
+
+Visitante: Frodo
+
+Promocion PACK Aventura. Descuento porcentual de 10%
+-Atracciones incluidas: [Moria(Aventura), Mordor(Aventura), Edoras(Aventura)]
+-Duracion: 8.5 horas
+-Precio original: $65
+-Precio con descuento: $59
+
+Atraccion
+-Nombre: [Rio de Rohan(Aventura)]
+-Precio= $20
+-Duracion: 1.5 horas
+
+Atraccion
+-Nombre: [Rivendell y jardines de Isengard(Paisaje)]
+-Precio= $15
+-Duracion: 2.0 horas
+
+Total: $94
+Tiempo: 12.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Aragorn
+
+Promocion PACK Aventura. Descuento porcentual de 10%
+-Atracciones incluidas: [Moria(Aventura), Mordor(Aventura), Edoras(Aventura)]
+-Duracion: 8.5 horas
+-Precio original: $65
+-Precio con descuento: $59
+
+Atraccion
+-Nombre: [Rio de Rohan(Aventura)]
+-Precio= $20
+-Duracion: 1.5 horas
+
+Total: $79
+Tiempo: 10.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Galardiel
+
+Atraccion
+-Nombre: [Los Argonah(Paisaje)]
+-Precio= $25
+-Duracion: 4.0 horas
+
+Atraccion
+-Nombre: [Lothlorien(Degustacion)]
+-Precio= $35
+-Duracion: 1.0 horas
+
+Total: $60
+Tiempo: 5.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Sam
+
+Promocion Pack 1. Descuento porcentual de 15%
+-Atracciones incluidas: [Erebor(Paisaje), Tierra Media(Degustacion), Campos de Pelennor(Paisaje)]
+-Duracion: 6.5 horas
+-Precio original: $27
+-Precio con descuento: $23
+
+Atraccion
+-Nombre: [Hobbiton(Degustacion)]
+-Precio= $5
+-Duracion: 1.5 horas
+
+Total: $28
+Tiempo: 8.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Gollum
+
+Promocion Pack 1. Descuento porcentual de 15%
+-Atracciones incluidas: [Erebor(Paisaje), Tierra Media(Degustacion), Campos de Pelennor(Paisaje)]
+-Duracion: 6.5 horas
+-Precio original: $27
+-Precio con descuento: $23
+
+Atraccion
+-Nombre: [Lothlorien(Degustacion)]
+-Precio= $35
+-Duracion: 1.0 horas
+
+Total: $58
+Tiempo: 7.5 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Gandalf
+
+Atraccion
+-Nombre: [Los Argonah(Paisaje)]
+-Precio= $25
+-Duracion: 4.0 horas
+
+Atraccion
+-Nombre: [Rivendell y jardines de Isengard(Paisaje)]
+-Precio= $15
+-Duracion: 2.0 horas
+
+Total: $40
+Tiempo: 6.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Sauron
+
+Promocion Pack 1. Descuento porcentual de 15%
+-Atracciones incluidas: [Erebor(Paisaje), Tierra Media(Degustacion), Campos de Pelennor(Paisaje)]
+-Duracion: 6.5 horas
+-Precio original: $27
+-Precio con descuento: $23
+
+Atraccion
+-Nombre: [Lothlorien(Degustacion)]
+-Precio= $35
+-Duracion: 1.0 horas
+
+Total: $58
+Tiempo: 7.5 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Legolas
+
+Promocion Pack 1. Descuento porcentual de 15%
+-Atracciones incluidas: [Erebor(Paisaje), Tierra Media(Degustacion), Campos de Pelennor(Paisaje)]
+-Duracion: 6.5 horas
+-Precio original: $27
+-Precio con descuento: $23
+
+Total: $23
+Tiempo: 6.5 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Arwen
+
+Atraccion
+-Nombre: [Edoras(Aventura)]
+-Precio= $30
+-Duracion: 3.5 horas
+
+Total: $30
+Tiempo: 3.5 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Bilbo
+
+Atraccion
+-Nombre: [Tierra Media(Degustacion)]
+-Precio= $7
+-Duracion: 1.5 horas
+
+Atraccion
+-Nombre: [Fuerte Bruinen(Degustacion)]
+-Precio= $6
+-Duracion: 2.0 horas
+
+Atraccion
+-Nombre: [Hobbiton(Degustacion)]
+-Precio= $5
+-Duracion: 1.5 horas
+
+Total: $18
+Tiempo: 5.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Balrog
+
+Promocion Pack 1. Descuento porcentual de 15%
+-Atracciones incluidas: [Erebor(Paisaje), Tierra Media(Degustacion), Campos de Pelennor(Paisaje)]
+-Duracion: 6.5 horas
+-Precio original: $27
+-Precio con descuento: $23
+
+Atraccion
+-Nombre: [Rivendell y jardines de Isengard(Paisaje)]
+-Precio= $15
+-Duracion: 2.0 horas
+
+Total: $38
+Tiempo: 8.5 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Elron
+
+Atraccion
+-Nombre: [Tierra Media(Degustacion)]
+-Precio= $7
+-Duracion: 1.5 horas
+
+Atraccion
+-Nombre: [Fuerte Bruinen(Degustacion)]
+-Precio= $6
+-Duracion: 2.0 horas
+
+Atraccion
+-Nombre: [Hobbiton(Degustacion)]
+-Precio= $5
+-Duracion: 1.5 horas
+
+Total: $18
+Tiempo: 5.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Gimli
+
+Promocion PACK River. Descuento absoluto de 30
+-Atracciones incluidas: [Los Argonah(Paisaje), Rio de Rohan(Aventura), Gollums pool(Aventura)]
+-Duracion: 9.5 horas
+-Precio original: $57
+-Precio con descuento: $30
+
+
+Atraccion
+-Nombre: [Moria(Aventura)]
+-Precio= $10
+-Duracion: 2.0 horas
+
+Total: $40
+Tiempo: 11.5 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Melkor
+
+Promocion Pack 1. Descuento porcentual de 15%
+-Atracciones incluidas: [Erebor(Paisaje), Tierra Media(Degustacion), Campos de Pelennor(Paisaje)]
+-Duracion: 6.5 horas
+-Precio original: $27
+-Precio con descuento: $23
+
+Atraccion
+-Nombre: [Lothlorien(Degustacion)]
+-Precio= $35
+-Duracion: 1.0 horas
+
+Atraccion
+-Nombre: [Fuerte Bruinen(Degustacion)]
+-Precio= $6
+-Duracion: 2.0 horas
+
+Atraccion
+-Nombre: [Hobbiton(Degustacion)]
+-Precio= $5
+-Duracion: 1.5 horas
+
+Total: $69
+Tiempo: 11.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Peregrin
+
+Promocion Pack 1. Descuento porcentual de 15%
+-Atracciones incluidas: [Erebor(Paisaje), Tierra Media(Degustacion), Campos de Pelennor(Paisaje)]
+-Duracion: 6.5 horas
+-Precio original: $27
+-Precio con descuento: $23
+
+Atraccion
+-Nombre: [Lothlorien(Degustacion)]
+-Precio= $35
+-Duracion: 1.0 horas
+
+Total: $58
+Tiempo: 7.5 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Faramir
+
+Atraccion
+-Nombre: [Mordor(Aventura)]
+-Precio= $25
+-Duracion: 3.0 horas
+
+Atraccion
+-Nombre: [Bosque Negro(Aventura)]
+-Precio= $3
+-Duracion: 4.0 horas
+
+Total: $28
+Tiempo: 7.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Radagast
+
+Atraccion
+-Nombre: [Los Argonah(Paisaje)]
+-Precio= $25
+-Duracion: 4.0 horas
+
+Atraccion
+-Nombre: [Rivendell y jardines de Isengard(Paisaje)]
+-Precio= $15
+-Duracion: 2.0 horas
+
+Total: $40
+Tiempo: 6.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Isildur
+
+Atraccion
+-Nombre: [Lothlorien(Degustacion)]
+-Precio= $35
+-Duracion: 1.0 horas
+
+Atraccion
+-Nombre: [Senderos de los Muertos(Paisaje)]
+-Precio= $8
+-Duracion: 2.0 horas
+
+Total: $43
+Tiempo: 3.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Eowyn
+
+Promocion Pack 2. Descuento absoluto de 30
+-Atracciones incluidas: [La cima de los vientos(Paisaje), Lothlorien(Degustacion), Abismo de Helm(Paisaje), La Comarca(Degustacion)]
+-Duracion: 12.5 horas
+-Precio original: $63
+-Precio con descuento: $30
+
+
+Atraccion
+-Nombre: [Tierra Media(Degustacion)]
+-Precio= $7
+-Duracion: 1.5 horas
+
+Total: $37
+Tiempo: 14.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Boromir
+
+Promocion Pack 1. Descuento porcentual de 15%
+-Atracciones incluidas: [Erebor(Paisaje), Tierra Media(Degustacion), Campos de Pelennor(Paisaje)]
+-Duracion: 6.5 horas
+-Precio original: $27
+-Precio con descuento: $23
+
+Atraccion
+-Nombre: [La cima de los vientos(Paisaje)]
+-Precio= $20
+-Duracion: 3.0 horas
+
+Total: $43
+Tiempo: 9.5 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Saruman
+
+Atraccion
+-Nombre: [Gollums pool(Aventura)]
+-Precio= $12
+-Duracion: 4.0 horas
+
+Atraccion
+-Nombre: [Campamento de Ithilien(Aventura)]
+-Precio= $9
+-Duracion: 8.0 horas
+
+Total: $21
+Tiempo: 12.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Elendil
+
+Atraccion
+-Nombre: [Lothlorien(Degustacion)]
+-Precio= $35
+-Duracion: 1.0 horas
+
+Atraccion
+-Nombre: [Tierra Media(Degustacion)]
+-Precio= $7
+-Duracion: 1.5 horas
+
+Atraccion
+-Nombre: [Fuerte Bruinen(Degustacion)]
+-Precio= $6
+-Duracion: 2.0 horas
+
+Atraccion
+-Nombre: [Hobbiton(Degustacion)]
+-Precio= $5
+-Duracion: 1.5 horas
+
+Total: $53
+Tiempo: 6.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Grima
+
+Promocion Pack 2. Descuento absoluto de 30
+-Atracciones incluidas: [La cima de los vientos(Paisaje), Lothlorien(Degustacion), Abismo de Helm(Paisaje), La Comarca(Degustacion)]
+-Duracion: 12.5 horas
+-Precio original: $63
+-Precio con descuento: $30
+
+
+Atraccion
+-Nombre: [Rivendell y jardines de Isengard(Paisaje)]
+-Precio= $15
+-Duracion: 2.0 horas
+
+Atraccion
+-Nombre: [Tierra Media(Degustacion)]
+-Precio= $7
+-Duracion: 1.5 horas
+
+Total: $52
+Tiempo: 16.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Fengel
+
+Atraccion
+-Nombre: [Gollums pool(Aventura)]
+-Precio= $12
+-Duracion: 4.0 horas
+
+Atraccion
+-Nombre: [Campamento de Ithilien(Aventura)]
+-Precio= $9
+-Duracion: 8.0 horas
+
+Total: $21
+Tiempo: 12.0 horas
+
+----------------------------------------------------------------------------------
+

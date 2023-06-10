@@ -8,7 +8,7 @@ public class Itinerario {
 	private List<Promocion> promociones;
 	private List<Atraccion> atracciones;
 	private int total;
-	private int tiempo;
+	private double tiempo;
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -34,7 +34,7 @@ public class Itinerario {
 		this.total += precio;
 	}
 	
-	public int getTiempo() {
+	public double getTiempo() {
 		return tiempo;
 	}
 	public void sumarTiempo(double tiempo) {
@@ -61,11 +61,11 @@ public class Itinerario {
 	@Override
 	public String toString() {
 		return 
-				"Visitante: " + usuario.getNombre() + "\n"
+				"Visitante: " + usuario.getNombre() + "\n\n"
 				 + this.mostrarPromociones() 
 				 + this.mostrarAtracciones() 
-				+ "Total: " + total +"\n"
-				+ "Tiempo: " + tiempo+"\n" ;
+				+ "Total: $" + total +"\n"
+				+ "Tiempo: " + tiempo+" horas\n" ;
 	}
 	
 	

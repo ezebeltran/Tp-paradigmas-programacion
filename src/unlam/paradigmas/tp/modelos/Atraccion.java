@@ -114,11 +114,11 @@ public class Atraccion implements Comparable<Atraccion>, Sugerencia {
 
 	@Override
 	public int compareTo(Atraccion otraAtraccion) {
-		int res= Integer.compare(this.precio, otraAtraccion.precio);
+		int res= Integer.compare(otraAtraccion.precio, this.precio);
 		if(res!=0)
 			return res;
 		
-		return Double.compare(this.tiempo, otraAtraccion.tiempo);
+		return Double.compare(otraAtraccion.tiempo, this.tiempo);
 }
 
 	@Override
