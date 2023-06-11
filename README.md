@@ -37,4 +37,4 @@ promociones de tres tipos:
 
 # Diagrama de Clases
 
-![diagrama de clases](https://raw.githubusercontent.com/ezebeltran/Tp-paradigmas-programacion/master/TierraMedia.drawio?token=GHSAT0AAAAAACCTNAKDTRMDBVFC4NKDTYLEZEGBYOA)
+![diagrama de clases](https://github.com/ezebeltran/Tp-paradigmas-programacion/blob/e250a65bd9d84236c45e9c7097463f6c15e824cd/TierraMedia.drawio.svg)
