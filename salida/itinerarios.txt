@@ -5,42 +5,41 @@ Itinerarios
 
 Visitante: Frodo
 
-Promocion PACK Aventura. Descuento porcentual de 10%
--Atracciones incluidas: [Moria(Aventura), Mordor(Aventura), Edoras(Aventura)]
--Duracion: 8.5 horas
--Precio original: $65
--Precio con descuento: $59
+Promocion PACK Mix. Descuento porcentual de 20%
+-Atracciones incluidas: [Rio de Rohan(Aventura), Campamento de Ithilien(Aventura), Fuerte Bruinen(Degustacion)]
+-Duracion: 11.5 horas
+-Precio original: $35
+-Precio con descuento: $28
+
+Total: $28
+Tiempo: 11.5 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Aragorn
 
 Atraccion
--Nombre: [Rio de Rohan(Aventura)]
+-Nombre: [Los Argonah(Paisaje)]
+-Precio= $25
+-Duracion: 4.0 horas
+
+Atraccion
+-Nombre: [La cima de los vientos(Paisaje)]
 -Precio= $20
--Duracion: 1.5 horas
+-Duracion: 3.0 horas
 
 Atraccion
 -Nombre: [Rivendell y jardines de Isengard(Paisaje)]
 -Precio= $15
 -Duracion: 2.0 horas
 
-Total: $94
-Tiempo: 12.0 horas
-
-----------------------------------------------------------------------------------
-
-Visitante: Aragorn
-
-Promocion PACK Aventura. Descuento porcentual de 10%
--Atracciones incluidas: [Moria(Aventura), Mordor(Aventura), Edoras(Aventura)]
--Duracion: 8.5 horas
--Precio original: $65
--Precio con descuento: $59
-
 Atraccion
--Nombre: [Rio de Rohan(Aventura)]
--Precio= $20
--Duracion: 1.5 horas
+-Nombre: [Erebor(Paisaje)]
+-Precio= $12
+-Duracion: 3.0 horas
 
-Total: $79
-Tiempo: 10.0 horas
+Total: $72
+Tiempo: 12.0 horas
 
 ----------------------------------------------------------------------------------
 
@@ -221,48 +220,37 @@ Tiempo: 5.0 horas
 
 Visitante: Gimli
 
-Promocion PACK River. Descuento absoluto de 30
--Atracciones incluidas: [Los Argonah(Paisaje), Rio de Rohan(Aventura), Gollums pool(Aventura)]
--Duracion: 9.5 horas
--Precio original: $57
--Precio con descuento: $30
-
+Promocion PACK Aventura. Descuento porcentual de 10%
+-Atracciones incluidas: [Moria(Aventura), Mordor(Aventura), Edoras(Aventura)]
+-Duracion: 8.5 horas
+-Precio original: $65
+-Precio con descuento: $59
 
 Atraccion
--Nombre: [Moria(Aventura)]
--Precio= $10
+-Nombre: [Rio de Rohan(Aventura)]
+-Precio= $20
+-Duracion: 1.5 horas
+
+Atraccion
+-Nombre: [Rivendell y jardines de Isengard(Paisaje)]
+-Precio= $15
 -Duracion: 2.0 horas
 
-Total: $40
-Tiempo: 11.5 horas
+Total: $94
+Tiempo: 12.0 horas
 
 ----------------------------------------------------------------------------------
 
 Visitante: Melkor
 
-Promocion Pack 1. Descuento porcentual de 15%
--Atracciones incluidas: [Erebor(Paisaje), Tierra Media(Degustacion), Campos de Pelennor(Paisaje)]
--Duracion: 6.5 horas
--Precio original: $27
--Precio con descuento: $23
+Promocion PACK Mix. Descuento porcentual de 20%
+-Atracciones incluidas: [Rio de Rohan(Aventura), Campamento de Ithilien(Aventura), Fuerte Bruinen(Degustacion)]
+-Duracion: 11.5 horas
+-Precio original: $35
+-Precio con descuento: $28
 
-Atraccion
--Nombre: [Lothlorien(Degustacion)]
--Precio= $35
--Duracion: 1.0 horas
-
-Atraccion
--Nombre: [Fuerte Bruinen(Degustacion)]
--Precio= $6
--Duracion: 2.0 horas
-
-Atraccion
--Nombre: [Hobbiton(Degustacion)]
--Precio= $5
--Duracion: 1.5 horas
-
-Total: $69
-Tiempo: 11.0 horas
+Total: $28
+Tiempo: 11.5 horas
 
 ----------------------------------------------------------------------------------
 
@@ -287,17 +275,17 @@ Tiempo: 7.5 horas
 Visitante: Faramir
 
 Atraccion
--Nombre: [Mordor(Aventura)]
--Precio= $25
--Duracion: 3.0 horas
+-Nombre: [Edoras(Aventura)]
+-Precio= $30
+-Duracion: 3.5 horas
 
 Atraccion
--Nombre: [Bosque Negro(Aventura)]
--Precio= $3
--Duracion: 4.0 horas
+-Nombre: [Minas Tirith(Paisaje)]
+-Precio= $5
+-Duracion: 2.5 horas
 
-Total: $28
-Tiempo: 7.0 horas
+Total: $35
+Tiempo: 6.0 horas
 
 ----------------------------------------------------------------------------------
 
@@ -321,16 +309,11 @@ Tiempo: 6.0 horas
 Visitante: Isildur
 
 Atraccion
--Nombre: [Lothlorien(Degustacion)]
--Precio= $35
--Duracion: 1.0 horas
+-Nombre: [Mordor(Aventura)]
+-Precio= $25
+-Duracion: 3.0 horas
 
-Atraccion
--Nombre: [Senderos de los Muertos(Paisaje)]
--Precio= $8
--Duracion: 2.0 horas
-
-Total: $43
+Total: $25
 Tiempo: 3.0 horas
 
 ----------------------------------------------------------------------------------
@@ -375,17 +358,27 @@ Tiempo: 9.5 horas
 Visitante: Saruman
 
 Atraccion
+-Nombre: [Mordor(Aventura)]
+-Precio= $25
+-Duracion: 3.0 horas
+
+Atraccion
 -Nombre: [Gollums pool(Aventura)]
 -Precio= $12
 -Duracion: 4.0 horas
 
 Atraccion
--Nombre: [Campamento de Ithilien(Aventura)]
--Precio= $9
--Duracion: 8.0 horas
+-Nombre: [Moria(Aventura)]
+-Precio= $10
+-Duracion: 2.0 horas
 
-Total: $21
-Tiempo: 12.0 horas
+Atraccion
+-Nombre: [Lothlorien(Degustacion)]
+-Precio= $35
+-Duracion: 1.0 horas
+
+Total: $82
+Tiempo: 10.0 horas
 
 ----------------------------------------------------------------------------------
 
@@ -448,12 +441,22 @@ Atraccion
 -Duracion: 4.0 horas
 
 Atraccion
--Nombre: [Campamento de Ithilien(Aventura)]
--Precio= $9
--Duracion: 8.0 horas
+-Nombre: [Moria(Aventura)]
+-Precio= $10
+-Duracion: 2.0 horas
 
-Total: $21
-Tiempo: 12.0 horas
+Atraccion
+-Nombre: [Bosque Negro(Aventura)]
+-Precio= $3
+-Duracion: 4.0 horas
+
+Atraccion
+-Nombre: [Lothlorien(Degustacion)]
+-Precio= $35
+-Duracion: 1.0 horas
+
+Total: $60
+Tiempo: 11.0 horas
 
 ----------------------------------------------------------------------------------
 

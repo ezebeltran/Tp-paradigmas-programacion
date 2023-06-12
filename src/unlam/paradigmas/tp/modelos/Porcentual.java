@@ -2,8 +2,6 @@ package unlam.paradigmas.tp.modelos;
 
 import java.util.List;
 
-import unlam.paradigmas.tp.utils.ColorC;
-
 public class Porcentual extends Promocion {
 	
 	private int descuento;

@@ -2,7 +2,6 @@ package unlam.paradigmas.tp.modelos;
 
 import java.util.Scanner;
 
-import unlam.paradigmas.tp.utils.ColorC;
 
 public class Atraccion implements Comparable<Atraccion>, Sugerencia {
 	private String nombre;

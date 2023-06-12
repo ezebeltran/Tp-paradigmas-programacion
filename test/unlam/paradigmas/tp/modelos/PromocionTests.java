@@ -1,15 +1,13 @@
 package unlam.paradigmas.tp.modelos;
 
-import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import unlam.paradigmas.tp.logica.Logica;
-import unlam.paradigmas.tp.utils.LectorDePromocion;
+import unlam.paradigmas.tp.utils.Archivo;
 
 public class PromocionTests {
 	private List<Atraccion> atraccionesEjemplo;
@@ -28,48 +26,7 @@ public class PromocionTests {
 		atraccionesEjemplo.add(new Atraccion("Bosque Negro"		,3	,4.0,12	,"Aventura"));
 	}
 
-	
-//	@Test
-//	public void existeElArchivo() {
-//		
-//		Boolean fallo = false;
-//		try {
-//			List<Promocion> promociones = Logica.getPromocionesAchivo();
-//		} catch (Exception e) {
-//			fallo = true;
-//		}
-//		Assert.assertFalse(fallo);
-//	}
-//	
-//	@Test
-//	public void noExisteElArchivo () {
-//		Boolean fallo = true;
-//		try {
-//			LectorDePromocion archivoPromo = new LectorDePromocion("");
-//			archivoPromo.existeArvhivo();
-//			
-//		} catch (Exception e) {
-//			fallo = false;
-//		}
-//		Assert.assertFalse(fallo);
-//	}
-//	
-//	@Test
-//	public void archivoVacio() {
-//		Boolean fallo = true;
-//		ArrayList<Promocion> promocionesEsperado = new ArrayList<Promocion>();
-//		ArrayList<Promocion> promocionesObtenido = null;
-//		try {
-//			LectorDePromocion archivoPromo = new LectorDePromocion("entrada/vacio.txt");
-//			promocionesObtenido = archivoPromo.leerPromociones(atraccionesEjemplo);
-//		} catch (Exception e) {
-//			fallo = true;
-//		}
-//		if (promocionesEsperado.isEmpty() && promocionesObtenido.isEmpty())
-//			fallo=false;
-//		Assert.assertFalse(fallo);
-//	}
-//	
+
 	@Test
 	public void leeUnaPromocionPorcentual() {
 		Boolean fallo = true;
@@ -82,7 +39,7 @@ public class PromocionTests {
 		Porcentual promoAventuraPorcentual = new Porcentual("PACK Aventura", atraccionesPromo, "Porcentual", 10);
 		promocionEsperada.add(promoAventuraPorcentual);
 				
-		List<Promocion> promocionObtenida = Logica.getPromocionesArchivoRuta("entrada/promocionPorcentual.txt",atraccionesEjemplo);
+		List<Promocion> promocionObtenida = new Archivo().getPromocionesArchivoRuta("entrada/promocionPorcentual.txt",atraccionesEjemplo);
 		
 		if (promocionEsperada.equals(promocionObtenida))
 			fallo=false;
@@ -102,7 +59,7 @@ public class PromocionTests {
 		Absoluta promoAventuraAbsoluta = new Absoluta("PACK River",atraccionesPromo, "Absoluta",30);
 		promocionEsperada.add(promoAventuraAbsoluta);
 				
-		List<Promocion> promocionObtenida = Logica.getPromocionesArchivoRuta("entrada/promocionAbsoluta.txt",atraccionesEjemplo);
+		List<Promocion> promocionObtenida = new Archivo().getPromocionesArchivoRuta("entrada/promocionAbsoluta.txt",atraccionesEjemplo);
 		
 		if (promocionEsperada.equals(promocionObtenida))
 			fallo=false;
@@ -122,7 +79,7 @@ public class PromocionTests {
 		Combo promoAventuraCombo = new Combo("PACK AXB",atraccionesPromo, "Combo");
 		promocionEsperada.add(promoAventuraCombo);
 				
-		List<Promocion> promocionObtenida = Logica.getPromocionesArchivoRuta("entrada/promocionCombo.txt",atraccionesEjemplo);
+		List<Promocion> promocionObtenida = new Archivo().getPromocionesArchivoRuta("entrada/promocionCombo.txt",atraccionesEjemplo);
 		
 		
 		if (promocionEsperada.equals(promocionObtenida))
