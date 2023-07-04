@@ -5,16 +5,14 @@ public class Usuario {
 	private double presupuesto;
 	private double tiempoDisponible;
 	private String tipoPreferido;
-	//Itinerario?
-	
-	//Constructor
+
 	public Usuario(String nombre, double presupuesto, double tiempoDisponible, String tipoPreferido) {
 		this.nombre = nombre;
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.tipoPreferido = tipoPreferido;
 	}
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -26,27 +24,25 @@ public class Usuario {
 	public double getTiempo() {
 		return this.tiempoDisponible;
 	}
-	
+
 	public String getTipoPreferido() {
 		return this.tipoPreferido;
 	}
-	
+
 	public void reducirPresupuesto(double valor) {
-		if(valor > this.presupuesto) {
+		if (valor > this.presupuesto) {
 			throw new RuntimeException("El precio es mayor al presupuesto.");
 		} else {
 			this.presupuesto -= valor;
 		}
 	}
-	
+
 	public void reducirTiempo(double tiempo) {
-		if(tiempo > this.tiempoDisponible) {
+		if (tiempo > this.tiempoDisponible) {
 			throw new RuntimeException("El tiempo es mayor al tiempo disponible del usuario.");
 		} else {
 			this.tiempoDisponible -= tiempo;
 		}
 	}
-	
-	//agregarItinerarios
-	//mostrarItinerario
+
 }

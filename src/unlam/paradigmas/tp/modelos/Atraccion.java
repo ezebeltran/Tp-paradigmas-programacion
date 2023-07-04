@@ -2,7 +2,6 @@ package unlam.paradigmas.tp.modelos;
 
 import java.util.Scanner;
 
-
 public class Atraccion implements Comparable<Atraccion>, Sugerencia {
 	private String nombre;
 	private Integer precio;
@@ -102,34 +101,28 @@ public class Atraccion implements Comparable<Atraccion>, Sugerencia {
 
 	@Override
 	public String toString() {
-		return 
-			 "Atraccion\n"
-				+ "-Nombre: ["
-				+ nombre 
-				+ "("+tipo+")]\n"
-				+ "-Precio= $" + precio + "\n"
+		return "Atraccion\n" + "-Nombre: [" + nombre + "(" + tipo + ")]\n" + "-Precio= $" + precio + "\n"
 				+ "-Duracion: " + tiempo + " horas\n";
 	}
 
 	@Override
 	public int compareTo(Atraccion otraAtraccion) {
-		int res= Integer.compare(otraAtraccion.precio, this.precio);
-		if(res!=0)
+		int res = Integer.compare(otraAtraccion.precio, this.precio);
+		if (res != 0)
 			return res;
-		
+
 		return Double.compare(otraAtraccion.tiempo, this.tiempo);
-}
+	}
 
 	@Override
 	public boolean sugerir(Scanner scanner) {
 		System.out.println(this.toString());
-		String respuesta="";
+		String respuesta = "";
 		do {
 			System.out.println("Acepta sugerencia? Ingrese S o N");
-			 respuesta = scanner.nextLine();
-		}while(!respuesta.equals("S") && !respuesta.equals("s") && !respuesta.equals("N") && !respuesta.equals("n"));
-		
-		
+			respuesta = scanner.nextLine();
+		} while (!respuesta.equals("S") && !respuesta.equals("s") && !respuesta.equals("N") && !respuesta.equals("n"));
+
 		if (respuesta.equals("S") || respuesta.equals("s")) {
 			System.out.println("!Aceptada!");
 			return true;
@@ -142,7 +135,7 @@ public class Atraccion implements Comparable<Atraccion>, Sugerencia {
 	}
 
 	public boolean tieneCupo() {
-		return this.cupo>0;
+		return this.cupo > 0;
 	}
 
 }

@@ -24,17 +24,12 @@ public class Main {
 
 		List<Itinerario> itinerarios = new ArrayList<Itinerario>();
 
-		/** leer datos de entrada **/
 		List<Usuario> usuarios = archivo.leerArchivoUsuario();
 		List<Atraccion> atracciones = archivo.leerArchivoAtracciones();
 		List<Promocion> promociones = archivo.leerArchivoPromociones(atracciones);
 
-		/** Ordenar lista promociones y atracciones **/
-
 		Collections.sort(promociones);
 		Collections.sort(atracciones);
-
-		/** Iterar lista usuarios **/
 
 		Iterator<Usuario> itUsuarios = usuarios.iterator();
 
@@ -51,7 +46,6 @@ public class Main {
 			System.out.println("Nombre de visitante: " + usuario.getNombre() + "\n");
 
 			/** Iterar lista promociones preferidas **/
-
 			Iterator<Promocion> itPromoPref = promociones.iterator();
 
 			while (itPromoPref.hasNext()) {
@@ -61,7 +55,7 @@ public class Main {
 						&& usuario.getTiempo() >= promocion.getTiempoTotal()
 						&& noRepitePromocion(promocion, promosAceptadas)
 						&& promocion.algunaAtraccionTipo(usuario.getTipoPreferido())) {
-					/** Sugerir promo **/
+
 					haySugerenciaUsu = true;
 					if (promocion.sugerir(scanner)) {
 						promosAceptadas.add(promocion);
@@ -82,7 +76,6 @@ public class Main {
 			}
 
 			/** Iterar lista atracciones preferidas **/
-
 			Iterator<Atraccion> itAtraccionesPref = atracciones.iterator();
 
 			while (itAtraccionesPref.hasNext()) {
@@ -113,7 +106,6 @@ public class Main {
 			}
 
 			/** Iterar lista promociones restantes **/
-
 			Iterator<Promocion> itPromoRestantes = promociones.iterator();
 
 			while (itPromoRestantes.hasNext()) {
@@ -123,7 +115,7 @@ public class Main {
 						&& usuario.getTiempo() >= promocion.getTiempoTotal() && promocion.tieneCupo()
 						&& noRepitePromocion(promocion, promosAceptadas)
 						&& !promocion.algunaAtraccionTipo(usuario.getTipoPreferido())) {
-					/** Sugerir promo **/
+
 					haySugerenciaUsu = true;
 					if (promocion.sugerir(scanner)) {
 						promosAceptadas.add(promocion);
@@ -145,7 +137,6 @@ public class Main {
 			}
 
 			/** Iterar lista atracciones restantes **/
-
 			Iterator<Atraccion> itAtraccionesRestantes = atracciones.iterator();
 
 			while (itAtraccionesRestantes.hasNext()) {
@@ -209,7 +200,6 @@ public class Main {
 		new Archivo().guardarArchivo(itinerarios);
 
 		scanner.close();
-		/** Armar lista itinerario por usuario **/
 
 	}
 

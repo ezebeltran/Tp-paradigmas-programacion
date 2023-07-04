@@ -1,9 +1,7 @@
 package unlam.paradigmas.tp.modelos;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
-
 
 public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 
@@ -15,20 +13,19 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 	protected int precioPromocion;
 
 	public Promocion(String nombre, List<Atraccion> atracciones, String tipo) {
-		this.nombre=nombre;
+		this.nombre = nombre;
 		this.atracciones = atracciones;
 		this.tipo = tipo;
-		
+
 		for (Atraccion atraccion : atracciones) {
 			this.precioNormal += atraccion.getPrecio();
 		}
-		
-		
+
 		for (Atraccion atraccion : atracciones) {
-			this.tiempoTotal+= atraccion.getTiempo();
+			this.tiempoTotal += atraccion.getTiempo();
 		}
 	}
-	
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -36,7 +33,7 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 	public String getTipo() {
 		return this.tipo;
 	}
-	
+
 	public double getTiempoTotal() {
 		return tiempoTotal;
 	}
@@ -44,58 +41,56 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 	public int getPrecioPromocion() {
 		return precioPromocion;
 	}
-	
+
 	public List<Atraccion> getAtracciones() {
 		return atracciones;
 	}
 
 	public boolean tieneCupo() {
 		for (Atraccion atraccion : atracciones) {
-			if ( !atraccion.tieneCupo() ) {
+			if (!atraccion.tieneCupo()) {
 				return false;
 			}
 		}
 		return true;
 	}
-	
+
 	public boolean tieneAtraccion(String nombreAtracion) {
 		for (Atraccion atraccion : atracciones) {
-			if(atraccion.getNombre().equals(nombreAtracion))
+			if (atraccion.getNombre().equals(nombreAtracion))
 				return true;
 		}
 		return false;
 	}
-	
-	/**tener en cuenta el combo**/
+
 	public boolean hayAtraccionSinCupo() {
 		for (Atraccion atraccion : atracciones) {
-			if(atraccion.getCupo()==0)
+			if (atraccion.getCupo() == 0)
 				return true;
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Verifica si la promocion tiene alguna atraccion de algun tipo
+	 * 
 	 * @param tipoAtraccion
 	 * @return
 	 */
 	public boolean algunaAtraccionTipo(String tipoAtraccion) {
 		for (Atraccion atraccion : atracciones) {
-			if(atraccion.getTipo().equals(tipoAtraccion))
+			if (atraccion.getTipo().equals(tipoAtraccion))
 				return true;
 		}
-		
+
 		return false;
-		
+
 	}
-	
+
 	public void reducirCupo() {
-		for (Atraccion atraccion : atracciones )
+		for (Atraccion atraccion : atracciones)
 			atraccion.reducirCupo();
 	}
-	
-	//public abstract void mostrarPromocion();
 
 	@Override
 	public int hashCode() {
@@ -156,52 +151,44 @@ public abstract class Promocion implements Comparable<Promocion>, Sugerencia {
 		}
 		return true;
 	}
-	
 
 	private String listAtraccionesAString() {
-		String res="";
+		String res = "";
 		for (Atraccion atraccion : atracciones) {
-			res=res+atraccion.getNombre()+"("+atraccion.getTipo()+"), ";
+			res = res + atraccion.getNombre() + "(" + atraccion.getTipo() + "), ";
 		}
-		
-		return res.substring(0, res.length()-2);
+
+		return res.substring(0, res.length() - 2);
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		return //ColorC.TEXT_RED
-				"-Atracciones incluidas: [" + this.listAtraccionesAString() + "]\n"
-				+"-Duracion: " + this.tiempoTotal + " horas\n"
-				+"-Precio original: $" + this.precioNormal + "\n"
-				+"-Precio con descuento: $" + this.precioPromocion + "\n"
-				//+ ColorC.TEXT_RED
-				//+ ", tipo=" + tipo + ", descuento=" + descuento
-//				+ ", precioSinDescuento=" + precioSinDescuento 
-//				+ ", precioConDescuento=" + precioConDescuento + "]"
-				;
+		return "-Atracciones incluidas: [" + this.listAtraccionesAString() + "]\n" + "-Duracion: " + this.tiempoTotal
+				+ " horas\n" + "-Precio original: $" + this.precioNormal + "\n" + "-Precio con descuento: $"
+				+ this.precioPromocion + "\n"
+
+		;
 	}
-	
+
 	@Override
 	public int compareTo(Promocion otraPromo) {
-		int res=Integer.compare(otraPromo.precioPromocion, this.precioPromocion);
-		if(res!=0) 
+		int res = Integer.compare(otraPromo.precioPromocion, this.precioPromocion);
+		if (res != 0)
 			return res;
-		
+
 		return Double.compare(otraPromo.tiempoTotal, this.tiempoTotal);
 	}
-	
+
 	@Override
 	public boolean sugerir(Scanner scanner) {
 		System.out.println(this.toString());
-		
-		String respuesta="";
+
+		String respuesta = "";
 		do {
 			System.out.println("Acepta sugerencia? Ingrese S o N");
-			 respuesta = scanner.nextLine();
-		}while(!respuesta.equals("S") && !respuesta.equals("s") && !respuesta.equals("N") && !respuesta.equals("n"));
-		
-		
+			respuesta = scanner.nextLine();
+		} while (!respuesta.equals("S") && !respuesta.equals("s") && !respuesta.equals("N") && !respuesta.equals("n"));
+
 		if (respuesta.equals("S") || respuesta.equals("s")) {
 			System.out.println("¡Aceptada!");
 			return true;

@@ -1,16 +1,10 @@
 package unlam.paradigmas.tp.modelos;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 public class UsuarioTests {
 
-	/*
-	@Before
-	public void setUp() throws Exception {
-	}*/
-	
 	@Test
 	public void obtenerNombreTrue() {
 		// Arrange
@@ -19,12 +13,12 @@ public class UsuarioTests {
 		Usuario user = new Usuario("Frodo", 10.0, 7.5, "Aventura");
 
 		// Act
-		boolean obtenido = user.getNombre() == nombre? true : false;
+		boolean obtenido = user.getNombre() == nombre ? true : false;
 
 		// Assert
 		Assert.assertEquals(esperado, obtenido);
 	}
-	
+
 	@Test
 	public void obtenerNombreFalse() {
 		// Arrange
@@ -33,12 +27,12 @@ public class UsuarioTests {
 		Usuario user = new Usuario("Frodo", 10.0, 7.5, "Aventura");
 
 		// Act
-		boolean obtenido = user.getNombre() == nombre? true : false;
+		boolean obtenido = user.getNombre() == nombre ? true : false;
 
 		// Assert
 		Assert.assertEquals(esperado, obtenido);
 	}
-	
+
 	@Test
 	public void obtenerPresupuestoTrue() {
 		// Arrange
@@ -47,12 +41,12 @@ public class UsuarioTests {
 		Usuario user = new Usuario("Frodo", 10.0, 7.5, "Aventura");
 
 		// Act
-		boolean obtenido = user.getPresupuesto() == presupuesto? true : false;
+		boolean obtenido = user.getPresupuesto() == presupuesto ? true : false;
 
 		// Assert
 		Assert.assertEquals(esperado, obtenido);
 	}
-	
+
 	@Test
 	public void obtenerPresupuestoFalse() {
 		// Arrange
@@ -61,7 +55,7 @@ public class UsuarioTests {
 		Usuario user = new Usuario("Frodo", 10.0, 7.5, "Aventura");
 
 		// Act
-		boolean obtenido = user.getPresupuesto() == presupuesto? true : false;
+		boolean obtenido = user.getPresupuesto() == presupuesto ? true : false;
 
 		// Assert
 		Assert.assertEquals(esperado, obtenido);
@@ -75,12 +69,12 @@ public class UsuarioTests {
 		Usuario user = new Usuario("Frodo", 10.0, 7.5, "Aventura");
 
 		// Act
-		boolean obtenido = user.getTiempo() == tiempo? true : false;
+		boolean obtenido = user.getTiempo() == tiempo ? true : false;
 
 		// Assert
 		Assert.assertEquals(esperado, obtenido);
 	}
-	
+
 	@Test
 	public void obtenerTiempoFalse() {
 		// Arrange
@@ -89,12 +83,12 @@ public class UsuarioTests {
 		Usuario user = new Usuario("Frodo", 10.0, 7.5, "Aventura");
 
 		// Act
-		boolean obtenido = user.getTiempo() == tiempo? true : false;
+		boolean obtenido = user.getTiempo() == tiempo ? true : false;
 
 		// Assert
 		Assert.assertEquals(esperado, obtenido);
 	}
-	
+
 	@Test
 	public void obtenerTipoPreferidoTrue() {
 		// Arrange
@@ -103,12 +97,12 @@ public class UsuarioTests {
 		Usuario user = new Usuario("Frodo", 10.0, 7.5, "Aventura");
 
 		// Act
-		boolean obtenido = user.getTipoPreferido() == tipo? true : false;
+		boolean obtenido = user.getTipoPreferido() == tipo ? true : false;
 
 		// Assert
 		Assert.assertEquals(esperado, obtenido);
 	}
-	
+
 	@Test
 	public void obtenerTipoPreferidoFalse() {
 		// Arrange
@@ -117,12 +111,12 @@ public class UsuarioTests {
 		Usuario user = new Usuario("Frodo", 10.0, 7.5, "Aventura");
 
 		// Act
-		boolean obtenido = user.getTipoPreferido() == tipo? true : false;
+		boolean obtenido = user.getTipoPreferido() == tipo ? true : false;
 
 		// Assert
 		Assert.assertEquals(esperado, obtenido);
 	}
-	
+
 	@Test
 	public void reducirPresupuestoTrue() {
 		// Arrange
@@ -133,12 +127,12 @@ public class UsuarioTests {
 
 		// Act
 		user.reducirPresupuesto(montoAReducir);
-		boolean obtenido = user.getPresupuesto() == presupuestoReducido? true : false;
+		boolean obtenido = user.getPresupuesto() == presupuestoReducido ? true : false;
 
 		// Assert
 		Assert.assertEquals(esperado, obtenido);
 	}
-	
+
 	@Test
 	public void reducirPresupuestoFalse() {
 		// Arrange
@@ -149,31 +143,30 @@ public class UsuarioTests {
 
 		// Act
 		user.reducirPresupuesto(montoAReducir);
-		boolean obtenido = user.getPresupuesto() == presupuestoReducido? true : false;
+		boolean obtenido = user.getPresupuesto() == presupuestoReducido ? true : false;
 
 		// Assert
 		Assert.assertEquals(esperado, obtenido);
 	}
-	
+
 	@Test
 	public void reducirPresupuestoError() {
 		// Arrange
 		boolean noReduce = false;
-		
+
 		double montoAReducir = 9999;
 		Usuario user = new Usuario("Frodo", 10.0, 7.5, "Aventura");
 
 		// Act
 		try {
 			user.reducirPresupuesto(montoAReducir);
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			noReduce = true;
 		}
 		// Assert
 		Assert.assertTrue(noReduce);
 	}
-	
+
 	@Test
 	public void reducirTiempoTrue() {
 		// Arrange
@@ -184,12 +177,12 @@ public class UsuarioTests {
 
 		// Act
 		user.reducirTiempo(tiempoAReducir);
-		boolean obtenido = user.getTiempo() == tiempoReducido? true : false;
-		
+		boolean obtenido = user.getTiempo() == tiempoReducido ? true : false;
+
 		// Assert
 		Assert.assertEquals(esperado, obtenido);
 	}
-	
+
 	@Test
 	public void reducirTiempoFalse() {
 		// Arrange
@@ -200,12 +193,12 @@ public class UsuarioTests {
 
 		// Act
 		user.reducirTiempo(tiempoAReducir);
-		boolean obtenido = user.getTiempo() == tiempoReducido? true : false;
-		
+		boolean obtenido = user.getTiempo() == tiempoReducido ? true : false;
+
 		// Assert
 		Assert.assertEquals(esperado, obtenido);
 	}
-	
+
 	@Test
 	public void reducirTiempoError() {
 		// Arrange
@@ -216,8 +209,7 @@ public class UsuarioTests {
 		// Act
 		try {
 			user.reducirTiempo(tiempoAReducir);
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			noReduce = true;
 		}
 		// Assert
