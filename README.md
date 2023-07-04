@@ -38,3 +38,15 @@ promociones de tres tipos:
 # Diagrama de Clases
 
 ![diagrama de clases](https://github.com/ezebeltran/Tp-paradigmas-programacion/blob/e250a65bd9d84236c45e9c7097463f6c15e824cd/TierraMedia.drawio.svg)
+
+
+# Como ejecutar
+
+Para ejecutar el programa se necesita el archivo "Turismo.jar" y 1 carpeta con el nombre "entrada" y 
+3 archivos de entrada de datos: "atracciones.txt" "promos.txt" "usuarios.txt"
+
+Con todo lo anterior se tiene que abrir la consola de comnados y dirigise donde se encuentra "turismo.jar"
+y ejcetar el siguiente comando:
+
+
+   java -jar Turismo.jar
