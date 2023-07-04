@@ -1,0 +1,25 @@
+1,PACK Aventura,Porcentual,10
+2,Moria
+2,Mordor
+2,Edoras
+1,PACK Mix,Porcentual,20
+2,Rio de Rohan
+2,Campamento de Ithilien
+2,Fuerte Bruinen
+1,PACK River,Absoluta,30
+2,Los Argonah
+2,Rio de Rohan
+2,Gollums pool
+1,Pack 1,Porcentual,15
+2,Erebor
+2,Tierra Media
+2,Campos de Pelennor
+1,Pack 2,Absoluta,30
+2,La cima de los vientos
+2,Lothlorien
+2,Abismo de Helm
+2,La Comarca
+1,PACK AXB,Combo,0
+2,Minas Tirith
+2,Abismo de Helm
+2,Erebor

@@ -1,0 +1,2 @@
+Frodo,100,12,Aventura
+Aragorn,79,12,Aventura
