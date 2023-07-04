@@ -1,0 +1,46 @@
+
+Itinerarios
+
+----------------------------------------------------------------------------------
+
+Visitante: Frodo
+
+Promocion PACK Aventura. Descuento porcentual de 10%
+-Atracciones incluidas: [Moria(Aventura), Mordor(Aventura), Edoras(Aventura)]
+-Duracion: 8.5 horas
+-Precio original: $65
+-Precio con descuento: $59
+
+Atraccion
+-Nombre: [Rio de Rohan(Aventura)]
+-Precio= $20
+-Duracion: 1.5 horas
+
+Atraccion
+-Nombre: [Rivendell y jardines de Isengard(Paisaje)]
+-Precio= $15
+-Duracion: 2.0 horas
+
+Total: $94
+Tiempo: 12.0 horas
+
+----------------------------------------------------------------------------------
+
+Visitante: Aragorn
+
+Promocion PACK Aventura. Descuento porcentual de 10%
+-Atracciones incluidas: [Moria(Aventura), Mordor(Aventura), Edoras(Aventura)]
+-Duracion: 8.5 horas
+-Precio original: $65
+-Precio con descuento: $59
+
+Atraccion
+-Nombre: [Rio de Rohan(Aventura)]
+-Precio= $20
+-Duracion: 1.5 horas
+
+Total: $79
+Tiempo: 10.0 horas
+
+----------------------------------------------------------------------------------
+

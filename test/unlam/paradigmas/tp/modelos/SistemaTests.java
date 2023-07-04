@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import unlam.paradigmas.tp.main.GeneradorDeSugerencias;
 import unlam.paradigmas.tp.main.Main;
 
 public class SistemaTests {
@@ -132,7 +133,7 @@ public class SistemaTests {
 		List<Promocion> promosAceptadas = new ArrayList<Promocion>();
 		promosAceptadas.add(promoAventuraAbsoluta);
 
-		Assert.assertFalse(Main.noRepitePromocion(promoAventuraAbsoluta, promosAceptadas));
+		Assert.assertFalse(GeneradorDeSugerencias.noRepitePromocion(promoAventuraAbsoluta, promosAceptadas));
 
 	}
 
@@ -150,7 +151,7 @@ public class SistemaTests {
 
 		Atraccion atraccionQueYaCompre = new Atraccion("Erebor", 12, 3.0, 32, "Paisaje");
 
-		Assert.assertFalse(Main.norepiteAtraccionEnPromo(atraccionQueYaCompre, promosAceptadas));
+		Assert.assertFalse(GeneradorDeSugerencias.norepiteAtraccionEnPromo(atraccionQueYaCompre, promosAceptadas));
 	}
 
 }
